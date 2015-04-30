@@ -59,6 +59,7 @@ class MarketDepthCalulator:
 		if currMoney < self.sells[depth][self.price] and currMoney > 0:
 			coinsExchanged = coinsExchanged + (currMoney / self.sells[depth][self.price])
 
+		#testing accuracy 
 		print "total bitcoins bought: {0}".format(coinsExchanged)
 		print "total market depth reached: {0}".format(depth)
 		print "total money spent: ${0}".format(money) 

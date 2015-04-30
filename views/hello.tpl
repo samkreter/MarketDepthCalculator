@@ -27,7 +27,7 @@
 				  <div class="row">
 					  <div class="form-group col-md-3">
 					    <label>RMB</label>
-					    <input type="number" class="form-control"  placeholder="Enter Amount">
+					    <input type="number" name="amount-RMB" class="form-control"  placeholder="Enter Amount">
 					    <div id="RMB-submit" class="btn btn-default">RMB Exchange</div>
 					  </div>
 					  <div class="form-group col-md-3">
@@ -36,7 +36,7 @@
 					  </div>
 					  <div class="form-group col-md-3">
 					    <label>CLP</label>
-					    <input type="number" class="form-control" name="CLP-Ammout" placeholder="Enter Amount">
+					    <input type="number" name="amount-CLP" class="form-control" name="CLP-Ammout" placeholder="Enter Amount">
 					    <div id="CLP-submit" class="btn btn-default">CLP Exchange</div>
 					  </div>
 					</div>

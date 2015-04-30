@@ -20,7 +20,7 @@ $( function() {
 	        processData: false,
 	        contentType: false,
 	        success: function (data, status){
-	        	
+	        	alert(data);
 	        }
 	    });
 	});
