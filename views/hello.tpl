@@ -28,16 +28,24 @@
 					  <div class="form-group col-md-3">
 					    <label>RMB</label>
 					    <input type="number" name="amount-RMB" class="form-control"  placeholder="Enter Amount">
-					    <div id="RMB-submit" class="btn btn-default">RMB Exchange</div>
+					    <div id="RMB-submit" class="btn btn-default btn-margin-fix">RMB Exchange</div>
 					  </div>
 					  <div class="form-group col-md-3">
-					    <label>BTC</label>
-					    <input type="text" id="disabledTextInput" class="form-control" placeholder="Password">
+					    <label>BTCChina</label>
+					    <div id="BTCChina-value"class="form-control boldedNumbers has-success" placeholder="Password"></div>
+						<label>OKCoin</label>
+					    <div id="OKCoin-value"class="form-control boldedNumbers" placeholder="Password"></div>
+					  </div>
+					  <div class="form-group col-md-3">
+					    <label>Chilebit</label>
+					    <div id="BTC-value"class="form-control boldedNumbers" placeholder="Password"></div>
+					    <label>SurBTC</label>
+					    <div id="BTC-value"class="form-control boldedNumbers" placeholder="Password"></div>
 					  </div>
 					  <div class="form-group col-md-3">
 					    <label>CLP</label>
 					    <input type="number" name="amount-CLP" class="form-control" name="CLP-Ammout" placeholder="Enter Amount">
-					    <div id="CLP-submit" class="btn btn-default">CLP Exchange</div>
+					    <div id="CLP-submit" class="btn btn-default btn-margin-fix">CLP Exchange</div>
 					  </div>
 					</div>
 					<input id="currency-input-hidden" type="hidden" name="currency" value="none">

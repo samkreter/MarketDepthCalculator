@@ -20,7 +20,14 @@ $( function() {
 	        processData: false,
 	        contentType: false,
 	        success: function (data, status){
-	        	alert(data);
+	        	$('#BTCChina-value').html(data['BTCChina']['coinsExchanged']);
+	        	$('#OKCoin-value').html(data['OKCoin']['coinsExchanged']);
+	        	if(data['OKCoin']['coinsExchanged'] >= data['BTCChina']['coinsExchanged']){
+	        		$('#OKCoin-value').css("border-color","green");
+	        	}
+	        	else{
+	        		$('#BTCChina-value').css("border-color","green");
+	        	}
 	        }
 	    });
 	});

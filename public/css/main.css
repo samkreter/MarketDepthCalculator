@@ -5,6 +5,10 @@ div.heder-logo{
 	font-size: 50px;
 	font-weight: bold;
 }
-button.curr-submiting{
+.btn-margin-fix{
 	margin-top: 5px;
+}
+.boldedNumbers{
+	font-weight: bold;
+	border-width: 2px;
 }

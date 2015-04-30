@@ -32,8 +32,10 @@ def is_ajax():
 	currency = request.forms.get('currency')
 	amount = request.forms.get("amount-{0}".format(currency))
 	calc = MarketDepthCalulator()
-	
-	return amount
+	totalMarketData = dict()
+	totalMarketData['OKCoin'] = calc.okcoin_buy_bitcoins(float(amount))
+	totalMarketData['BTCChina'] = calc.btcchina_buy_bitcoins(float(amount))
+	return totalMarketData
 	
 
 
