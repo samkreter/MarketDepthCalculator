@@ -10,12 +10,6 @@ from MarketDepthCalulator import MarketDepthCalulator
 #     return static_file(filename, root='static/fonts')
 
 
-#App routes
-@route('/is_ajax', method="POST")
-def is_ajax():
-	name = request.forms.get('currency')
-	return name
-
 #bootstrap public 
 @route('/bootstrap/css/<filename>')
 def bootstrapCSS(filename):
@@ -32,14 +26,12 @@ def javascripts(filename):
 def stylesheets(filename):
     return static_file(filename, root='public/css')
 
-
-
+#App routes
+@route('/is_ajax', method="POST")
+def is_ajax():
+	name = request.forms.get('currency')
+	return name
 	
-
-
-
-
-
 
 
 
