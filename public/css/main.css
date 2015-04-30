@@ -1,1 +1,10 @@
-je
+div.inner-container{
+	padding: 70px;
+}
+div.heder-logo{
+	font-size: 50px;
+	font-weight: bold;
+}
+button.curr-submiting{
+	margin-top: 5px;
+}

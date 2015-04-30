@@ -18,34 +18,41 @@
     <![endif]-->
   </head>
   <body>
-  	<div class="inner-container">
-	    <form role="form">
-		  <div class="row">
-			  <div class="form-group col-md-3">
-			    <label>RMB</label>
-			    <input type="number" class="form-control"  placeholder="Enter Ammount">
-			    <button type="submit" class="btn btn-default">RMB Exchange</button>
-			  </div>
-			  <div class="form-group col-md-3">
-			    <label>BTC</label>
-			    <input for="disabledTextInput" type="number" class="form-control" id="exampleInputPassword2" placeholder="Password">
-			  </div>
-			  <div class="form-group col-md-3">
-			    <label>CLP</label>
-			    <input type="number" class="form-control" id="exampleInputEmail2" placeholder="Enter Ammount">
-			    <button type="submit" class="btn btn-default">CLP Exchange</button>
-			  </div>
+	  <div class="container">
+	  		<header>
+	  			<div class="heder-logo">Bitnexo</div> 
+	  		</header>
+		  	<div class="inner-container">
+			    <form role="form">
+				  <div class="row">
+					  <div class="form-group col-md-3">
+					    <label>RMB</label>
+					    <input type="number" class="form-control"  placeholder="Enter Amount">
+					    <div id="RMB-submit" class="btn btn-default">RMB Exchange</div>
+					  </div>
+					  <div class="form-group col-md-3">
+					    <label>BTC</label>
+					    <input type="text" id="disabledTextInput" class="form-control" placeholder="Password">
+					  </div>
+					  <div class="form-group col-md-3">
+					    <label>CLP</label>
+					    <input type="number" class="form-control" name="CLP-Ammout" placeholder="Enter Amount">
+					    <div id="CLP-submit" class="btn btn-default">CLP Exchange</div>
+					  </div>
+					</div>
+					<input id="currency-input-hidden" type="hidden" name="currency" value="none">
+				</form>
 			</div>
-
-		  <button type="submit" class="btn btn-default">Sign in</button>
-		</form>
-	</div>
+		</div>
 
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="jquery-2.1.3.min.js"type="text/javascript"></script>
+    <!-- // <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="main.js"type="text/javascript"></script>
   </body>
 </html>

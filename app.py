@@ -1,5 +1,5 @@
-from bottle import route, run, template, static_file
-
+from bottle import route,request, response, run, template, static_file
+from MarketDepthCalulator import MarketDepthCalulator
 
 # @get('/<filename:re:.*\.(jpg|png|gif|ico)>')
 # def images(filename):
@@ -9,15 +9,12 @@ from bottle import route, run, template, static_file
 # def fonts(filename):
 #     return static_file(filename, root='static/fonts')
 
-#public routes
-@route('/<filename:re:.*\.js>')
-def javascripts(filename):
-	return static_file(filename, root='public/js')
 
-@route('/<filename:re:.*\.css>')
-def stylesheets(filename):
-    return static_file(filename, root='public/css')
-
+#App routes
+@route('/is_ajax', method="POST")
+def is_ajax():
+	name = request.forms.get('currency')
+	return name
 
 #bootstrap public 
 @route('/bootstrap/css/<filename>')
@@ -26,6 +23,23 @@ def bootstrapCSS(filename):
 @route('/bootstrap/js/<filename>')
 def bootstrapJS(filename):
 	return static_file(filename,root='bootstrap/js')
+
+#public routes
+@route('/<filename:re:.*\.js>')
+def javascripts(filename):
+	return static_file(filename, root='public/js')
+@route('/<filename:re:.*\.css>')
+def stylesheets(filename):
+    return static_file(filename, root='public/css')
+
+
+
+	
+
+
+
+
+
 
 
 
