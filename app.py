@@ -40,8 +40,8 @@ def is_ajax():
 
 
 
-@route('/hello')
-def hello():
-    return template('hello')
+@route('/')
+def index():
+    return template('index')
 
 run(host='localhost', port=8080, debug=True)
