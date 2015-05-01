@@ -21,12 +21,10 @@ class MarketDepthCalulator:
 		okCoinStart_time = time.time()
 		okcoin_market_depth = json.loads(urllib2.urlopen(self.okcoin_market_depth_url).read())
 		print "okCoin Execution Time = ",time.time() - okCoinStart_time
-		self.pwd(okcoin_market_depth['asks']) ######################
 
 		btcChinaStart_time = time.time()
 		btcchina_market_depth = json.loads(urllib2.urlopen(self.btcchina_market_depth_url).read())
 		print "btcChina Execution Time = ",time.time() - btcChinaStart_time
-		self.pwd(btcchina_market_depth['asks'])########################
 
 		totalMarcketBuyData = dict()
 		totalMarcketBuyData['OKCoin'] = self.calculate_buy_bitcoins(money,okcoin_market_depth['asks'],okcoin_market_depth['bids'])
@@ -43,11 +41,6 @@ class MarketDepthCalulator:
 				currMoney = currMoney - (sells[depth][self.price] * sells[depth][self.quan])
 				coinsExchanged = coinsExchanged + sells[depth][self.quan]
 				depth = depth - 1
-				print "while loop coins: ",coinsExchanged
-				print "while loop money: ",currMoney
-				print "while loop price: ",sells[depth][self.price]
-				print "depth is ",depth
-				print ""
 		except:
 			print "unable to calculate due to lack of sellers"
 			print "depth reached was {0}".format(depth)
@@ -56,10 +49,6 @@ class MarketDepthCalulator:
 		print "Outside the ifstatmnet"
 		if currMoney > 0:
 			coinsExchanged = coinsExchanged + (currMoney / sells[depth][self.price])
-			print "if stat coins: ",coinsExchanged
-			print "if stat money: ",currMoney
-			print "if stat price: ", sells[depth][self.price]
-			print ""
 
 		#testing accuracy 
 		print "total bitcoins bought: {0}".format(coinsExchanged)
