@@ -44,9 +44,8 @@ class MarketDepthCalulator:
 		except:
 			print "unable to calculate due to lack of sellers"
 			print "depth reached was {0}".format(depth)
-			sys.exit()
+			return
 
-		print "Outside the ifstatmnet"
 		if currMoney > 0:
 			coinsExchanged = coinsExchanged + (currMoney / sells[depth][self.price])
 
