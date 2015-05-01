@@ -1,6 +1,7 @@
 import urllib2
 import json 
 import sys
+import time 
 
 class MarketDepthCalulator:
 	
@@ -12,8 +13,15 @@ class MarketDepthCalulator:
 
 
 	def chinaExchangeBuyCoins(self,money):
+		
+		okCoinStart_time = time.time()
 		okcoin_market_depth = json.loads(urllib2.urlopen(self.okcoin_market_depth_url).read())
+		print "okCoin Execution Time = ",time.time() - okCoinStart_time
+
+		btcChinaStart_time = time.time()
 		btcchina_market_depth = json.loads(urllib2.urlopen(self.btcchina_market_depth_url).read())
+		print "btcChina Execution Time = ",time.time() - btcChinaStart_time
+
 		totalMarcketBuyData = dict()
 		totalMarcketBuyData['OKCoin'] = self.calculate_buy_bitcoins(money,okcoin_market_depth['asks'],okcoin_market_depth['bids'])
 		totalMarcketBuyData['BTCChina'] = self.calculate_buy_bitcoins(money,btcchina_market_depth['asks'],btcchina_market_depth['bids'])
@@ -38,9 +46,10 @@ class MarketDepthCalulator:
 			coinsExchanged = coinsExchanged + (currMoney / sells[depth][self.price])
 
 		#testing accuracy 
-		# print "total bitcoins bought: {0}".format(coinsExchanged)
-		# print "total market depth reached: {0}".format(depth)
-		# print "total money spent: ${0}".format(money) 
+		print "total bitcoins bought: {0}".format(coinsExchanged)
+		print "total market depth reached: {0}".format(depth)
+		print "total money spent: ${0}".format(money) 
+		print " "
 
 		return dict(coinsExchanged=coinsExchanged,depth=depth)
 
