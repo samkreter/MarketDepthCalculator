@@ -26,6 +26,8 @@ def javascripts(filename):
 def stylesheets(filename):
     return static_file(filename, root='public/css')
 
+
+
 #App routes
 @route('/is_ajax', method="POST")
 def is_ajax():
@@ -33,9 +35,7 @@ def is_ajax():
 	amount = request.forms.get("amount-{0}".format(currency))
 	calc = MarketDepthCalulator()
 	totalMarketData = dict()
-	totalMarketData['OKCoin'] = calc.okcoin_buy_bitcoins(float(amount))
-	totalMarketData['BTCChina'] = calc.btcchina_buy_bitcoins(float(amount))
-	return totalMarketData
+	return calc.chinaExchangeBuyCoins(float(amount))
 	
 
 

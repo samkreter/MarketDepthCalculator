@@ -5,23 +5,19 @@ import sys
 class MarketDepthCalulator:
 	
 	def __init__(self):
+		self.okcoin_market_depth_url = "https://www.okcoin.cn/api/depth.do"
+		self.btcchina_market_depth_url = "https://data.btcchina.com/data/orderbook?limit=200"
 		self.price = 0
 		self.quan = 1
 
 
-	def okcoin_buy_bitcoins(self,money):
-		okcoin_market_depth_url = "https://www.okcoin.cn/api/depth.do"
-		okcoin_market_depth = json.loads(urllib2.urlopen(okcoin_market_depth_url).read())
-		sells = okcoin_market_depth['asks']
-		buys = okcoin_market_depth['bids']
-		return self.calculate_buy_bitcoins(money,sells,buys)
-
-	def btcchina_buy_bitcoins(self,money):
-		btcchina_market_depth_url = "https://data.btcchina.com/data/orderbook?limit=200"
-		btcchina_market_depth = json.loads(urllib2.urlopen(btcchina_market_depth_url).read())
-		sells = btcchina_market_depth['asks']
-		buys = btcchina_market_depth['bids']
-		return self.calculate_buy_bitcoins(money,sells,buys)
+	def chinaExchangeBuyCoins(self,money):
+		okcoin_market_depth = json.loads(urllib2.urlopen(self.okcoin_market_depth_url).read())
+		btcchina_market_depth = json.loads(urllib2.urlopen(self.btcchina_market_depth_url).read())
+		totalMarcketBuyData = dict()
+		totalMarcketBuyData['OKCoin'] = self.calculate_buy_bitcoins(money,okcoin_market_depth['asks'],okcoin_market_depth['bids'])
+		totalMarcketBuyData['BTCChina'] = self.calculate_buy_bitcoins(money,btcchina_market_depth['asks'],btcchina_market_depth['bids'])
+		return totalMarcketBuyData
 
 	def calculate_buy_bitcoins(self,money,sells,buys):
 		currMoney = money
@@ -49,28 +45,32 @@ class MarketDepthCalulator:
 		return dict(coinsExchanged=coinsExchanged,depth=depth)
 
 
-	def calulate_sell_bitcoins(self,coins):
-		currSellCoins = coins 
-		moneyEchanged = 0
-		depth = 0
 
-		try:
-			while currSellCoins > self.buys[depth][self.quan] and currSellCoins > 0:
-				moneyEchanged = moneyEchanged + (self.buys[depth][self.quan] * self.buys[depth][self.price])
-				currSellCoins = currSellCoins - self.buys[depth][self.quan]
-				depth = depth + 1 
-		except:
-			print "unable to calculate due to lack of buyers"
-			print "depth reached was {0}".format(depth)
-			print "coins sold reached {0}".format(currSellCoins)
-			sys.exit()
 
-		if currSellCoins < self.buys[depth][self.quan] and currSellCoins > 0:
-			moneyEchanged = moneyEchanged + (self.buys[depth][self.price] * currSellCoins)
+	#still a work in progross for the selling section 
 
-		print "total bitcoins sold: {0}".format(coins)
-		print "total market depth reached: {0}".format(depth)
-		print "total money exchanged for: ${0}".format(moneyEchanged) 
+	# def calulate_sell_bitcoins(self,coins):
+	# 	currSellCoins = coins 
+	# 	moneyEchanged = 0
+	# 	depth = 0
+
+	# 	try:
+	# 		while currSellCoins > self.buys[depth][self.quan] and currSellCoins > 0:
+	# 			moneyEchanged = moneyEchanged + (self.buys[depth][self.quan] * self.buys[depth][self.price])
+	# 			currSellCoins = currSellCoins - self.buys[depth][self.quan]
+	# 			depth = depth + 1 
+	# 	except:
+	# 		print "unable to calculate due to lack of buyers"
+	# 		print "depth reached was {0}".format(depth)
+	# 		print "coins sold reached {0}".format(currSellCoins)
+	# 		sys.exit()
+
+	# 	if currSellCoins < self.buys[depth][self.quan] and currSellCoins > 0:
+	# 		moneyEchanged = moneyEchanged + (self.buys[depth][self.price] * currSellCoins)
+
+	# 	print "total bitcoins sold: {0}".format(coins)
+	# 	print "total market depth reached: {0}".format(depth)
+	# 	print "total money exchanged for: ${0}".format(moneyEchanged) 
 
 
 	
