@@ -1,23 +1,24 @@
-import urllib2
-import json 
-import sys
-import time 
+import urllib2 #making the api calls
+import json #parseing the api calls to json
+import time #testing the timing of the api calls
 
 class MarketDepthCalulator:
 	
+	#setting the url for the exhanges api
 	def __init__(self):
 		self.okcoin_market_depth_url = "https://www.okcoin.cn/api/depth.do"
 		self.btcchina_market_depth_url = "https://data.btcchina.com/data/orderbook?limit=200"
 		self.price = 0
 		self.quan = 1
 
-
+	#test fundtion, delete before production
 	def pwd(self,sells):
 		for x in range(199,189):
 			print sells[x]
 
+	#use both chinas exchanges to set up the dict, main funtion to be called outside the class
 	def chinaExchangeBuyCoins(self,money):
-		
+		#testing the time for each api call
 		okCoinStart_time = time.time()
 		okcoin_market_depth = json.loads(urllib2.urlopen(self.okcoin_market_depth_url).read())
 		print "okCoin Execution Time = ",time.time() - okCoinStart_time
@@ -27,11 +28,12 @@ class MarketDepthCalulator:
 		print "btcChina Execution Time = ",time.time() - btcChinaStart_time
 
 		totalMarcketBuyData = dict()
-		totalMarcketBuyData['OKCoin'] = self.calculate_buy_bitcoins(money,okcoin_market_depth['asks'],okcoin_market_depth['bids'])
-		totalMarcketBuyData['BTCChina'] = self.calculate_buy_bitcoins(money,btcchina_market_depth['asks'],btcchina_market_depth['bids'])
+		totalMarcketBuyData['OKCoin'] = self.calculate_buy_bitcoins(money,okcoin_market_depth['asks'])
+		totalMarcketBuyData['BTCChina'] = self.calculate_buy_bitcoins(money,btcchina_market_depth['asks'])
 		return totalMarcketBuyData
 
-	def calculate_buy_bitcoins(self,money,sells,buys):
+	#use the api information to find the marketdepth for the money amount provided 
+	def calculate_buy_bitcoins(self,money,sells):
 		currMoney = money
 		coinsExchanged = 0
 		depth = 199
@@ -41,11 +43,13 @@ class MarketDepthCalulator:
 				currMoney = currMoney - (sells[depth][self.price] * sells[depth][self.quan])
 				coinsExchanged = coinsExchanged + sells[depth][self.quan]
 				depth = depth - 1
+		#if the exception is thrown, the amount exceeded the limit that the api gives out
 		except:
 			print "unable to calculate due to lack of sellers"
 			print "depth reached was {0}".format(depth)
 			return
 
+		#catch the final seller and add the correct amount of bitcoins to the coinsExchanged var
 		if currMoney > 0:
 			coinsExchanged = coinsExchanged + (currMoney / sells[depth][self.price])
 
@@ -56,13 +60,13 @@ class MarketDepthCalulator:
 		print "average price: ${0}".format(money/coinsExchanged)
 		print " "
 
-
+		#return the necssary data
 		return dict(coinsExchanged=coinsExchanged,depth=depth)
 
 
 
 
-	#still a work in progross for the selling section 
+	#####still a work in progross for the selling section #######################################################
 
 	# def calulate_sell_bitcoins(self,coins):
 	# 	currSellCoins = coins 
