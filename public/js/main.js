@@ -24,9 +24,11 @@ $( function() {
 	        	$('#OKCoin-value').html(data['OKCoin']['coinsExchanged']);
 	        	if(data['OKCoin']['coinsExchanged'] >= data['BTCChina']['coinsExchanged']){
 	        		$('#OKCoin-value').css("border-color","green");
+	        		$('#BTCChina-value').css("border-color",'');
 	        	}
 	        	else{
 	        		$('#BTCChina-value').css("border-color","green");
+	        		$('#OKCoin-value').css("border-color",'');
 	        	}
 	        }
 	    });
