@@ -16,6 +16,13 @@ class MarketDepthCalulator:
 		for x in range(199,189):
 			print sells[x]
 
+	def findGreaterBuyCoins(self,buyData):
+		if buyData['OKCoin']['coinsExchanged'] >= buyData['BTCChina']['coinsExchanged']:
+			return 'OKCoin'
+		else:
+			return 'BTCChina'
+
+
 	#use both chinas exchanges to set up the dict, main funtion to be called outside the class
 	def chinaExchangeBuyCoins(self,money):
 		#testing the time for each api call
@@ -27,10 +34,12 @@ class MarketDepthCalulator:
 		btcchina_market_depth = json.loads(urllib2.urlopen(self.btcchina_market_depth_url).read())
 		print "btcChina Execution Time = ",time.time() - btcChinaStart_time
 
-		totalMarcketBuyData = dict()
-		totalMarcketBuyData['OKCoin'] = self.calculate_buy_bitcoins(money,okcoin_market_depth['asks'])
-		totalMarcketBuyData['BTCChina'] = self.calculate_buy_bitcoins(money,btcchina_market_depth['asks'])
-		return totalMarcketBuyData
+		totalMarketBuyData = dict()
+		totalMarketBuyData['OKCoin'] = self.calculate_buy_bitcoins(money,okcoin_market_depth['asks'])
+		totalMarketBuyData['BTCChina'] = self.calculate_buy_bitcoins(money,btcchina_market_depth['asks'])
+
+		totalMarketBuyData['GreaterBuyCoins'] = findGreaterBuyCoins(totalMarketBuyData)
+		return totalMarketBuyData
 
 	#use the api information to find the marketdepth for the money amount provided 
 	def calculate_buy_bitcoins(self,money,sells):
