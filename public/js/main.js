@@ -22,8 +22,8 @@ $( function() {
 	        processData: false,
 	        contentType: false,
 	        success: function (data, status){
-	        	$('#BTCChina-value').html(data['BTCChina']['coinsExchanged']);
-	        	$('#OKCoin-value').html(data['OKCoin']['coinsExchanged']);
+	        	$('#BTCChina-value').html(data['BTCChina']['coinsExchanged'].toFixed(8));
+	        	$('#OKCoin-value').html(data['OKCoin']['coinsExchanged'].toFixed(8));
 	        	if(data['GreaterBuyCoins'] === 'OKCoin'){
 	        		$('#OKCoin-value').css("border-color","green");
 	        		$('#BTCChina-value').css("border-color",'');
@@ -33,7 +33,7 @@ $( function() {
 	        		$('#OKCoin-value').css("border-color",'');
 	        	}
 	        	
-	    		$('#China-Exchange-Group').append('<label>Percent Differece</label><div id="percentDifference-value"class="form-control boldedNumbers shortBox"></div>')
+	    		$('#China-Exchange-Group').append('<label>Percent Differece</label><div id="percentDifference-value"class="form-control boldedNumbers shortBox">%'+data['PercentDifference'].toFixed(3)+'</div>')
 	        }
 	    });
 	});

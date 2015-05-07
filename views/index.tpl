@@ -23,6 +23,10 @@
 	  			<div class="heder-logo">Bitnexo</div> 
 	  		</header>
 		  	<div class="inner-container">
+			   <div id="real-exchange-rate" class="row">
+			   		
+			   </div>
+
 			    <form role="form">
 				  <div class="row">
 					  <div class="form-group col-md-3">

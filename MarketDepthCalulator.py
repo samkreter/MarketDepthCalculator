@@ -17,10 +17,11 @@ class MarketDepthCalulator:
 			print sells[x]
 
 	def percentDifference(self,buyData):
-		if buyData['GreaterBuyCoins'] == 'OKCoin':
-			return (buyData['BTCChina']['coinsExchanged'] / buyData['OKCoin']['coinsExchanged']) * 100
-		else:
-			return (buyData['okCoin']['coinsExchanged'] / buyData['BTCChina']['coinsExchanged']) * 100
+		difference = abs(buyData['OKCoin']['coinsExchanged'] - buyData['BTCChina']['coinsExchanged'])
+		average = (buyData['OKCoin']['coinsExchanged'] + buyData['BTCChina']['coinsExchanged']) / 2
+		print "difference is: ",difference
+		print "average is : ",average
+		return (difference / average) * 100
 
 	def findGreaterBuyCoins(self,buyData):
 		if buyData['OKCoin']['coinsExchanged'] >= buyData['BTCChina']['coinsExchanged']:
@@ -46,7 +47,7 @@ class MarketDepthCalulator:
 
 		totalMarketBuyData['GreaterBuyCoins'] = self.findGreaterBuyCoins(totalMarketBuyData)
 
-		print self.percentDifference(totalMarketBuyData)
+		totalMarketBuyData['PercentDifference'] = self.percentDifference(totalMarketBuyData)
 
 		return totalMarketBuyData
 
