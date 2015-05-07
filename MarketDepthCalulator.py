@@ -38,7 +38,7 @@ class MarketDepthCalulator:
 		totalMarketBuyData['OKCoin'] = self.calculate_buy_bitcoins(money,okcoin_market_depth['asks'])
 		totalMarketBuyData['BTCChina'] = self.calculate_buy_bitcoins(money,btcchina_market_depth['asks'])
 
-		totalMarketBuyData['GreaterBuyCoins'] = findGreaterBuyCoins(totalMarketBuyData)
+		totalMarketBuyData['GreaterBuyCoins'] = self.findGreaterBuyCoins(totalMarketBuyData)
 		return totalMarketBuyData
 
 	#use the api information to find the marketdepth for the money amount provided 
@@ -53,7 +53,7 @@ class MarketDepthCalulator:
 				coinsExchanged = coinsExchanged + sells[depth][self.quan]
 				depth = depth - 1
 		#if the exception is thrown, the amount exceeded the limit that the api gives out
-		except:
+		except Exception:
 			print "unable to calculate due to lack of sellers"
 			print "depth reached was {0}".format(depth)
 			return

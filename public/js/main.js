@@ -22,7 +22,7 @@ $( function() {
 	        success: function (data, status){
 	        	$('#BTCChina-value').html(data['BTCChina']['coinsExchanged']);
 	        	$('#OKCoin-value').html(data['OKCoin']['coinsExchanged']);
-	        	if(data['OKCoin']['coinsExchanged'] >= data['BTCChina']['coinsExchanged']){
+	        	if(data['GreaterBuyCoins'] === 'OKCoin'){
 	        		$('#OKCoin-value').css("border-color","green");
 	        		$('#BTCChina-value').css("border-color",'');
 	        	}

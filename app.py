@@ -31,6 +31,7 @@ def stylesheets(filename):
 #App routes
 @route('/is_ajax', method="POST")
 def is_ajax():
+	print "ajax called triggered"
 	currency = request.forms.get('currency')
 	amount = request.forms.get("amount-{0}".format(currency))
 	calc = MarketDepthCalulator()
