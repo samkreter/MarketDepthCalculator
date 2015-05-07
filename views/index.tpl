@@ -30,11 +30,11 @@
 					    <input type="number" name="amount-RMB" class="form-control"  placeholder="Enter Amount">
 					    <div id="RMB-submit" class="btn btn-default btn-margin-fix">RMB Exchange</div>
 					  </div>
-					  <div class="form-group col-md-3">
+					  <div id="China-Exchange-Group" class="form-group col-md-3">
 					    <label>BTCChina</label>
-					    <div id="BTCChina-value"class="form-control boldedNumbers has-success" placeholder="Password"></div>
+					    <div id="BTCChina-value"class="form-control boldedNumbers has-success" ></div>
 						<label>OKCoin</label>
-					    <div id="OKCoin-value"class="form-control boldedNumbers" placeholder="Password"></div>
+					    <div id="OKCoin-value"class="form-control boldedNumbers" ></div>
 					  </div>
 					  <div class="form-group col-md-3">
 					    <label>Chilebit</label>

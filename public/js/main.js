@@ -13,6 +13,8 @@ $( function() {
 	
 	$(document).on("submit", "form", function(event){
 	    event.preventDefault();
+	    
+
 	    $.ajax({
 	        url: '/is_ajax',
 	        type: 'POST',            
@@ -30,6 +32,8 @@ $( function() {
 	        		$('#BTCChina-value').css("border-color","green");
 	        		$('#OKCoin-value').css("border-color",'');
 	        	}
+	        	
+	    		$('#China-Exchange-Group').append('<label>Percent Differece</label><div id="percentDifference-value"class="form-control boldedNumbers shortBox"></div>')
 	        }
 	    });
 	});

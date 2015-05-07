@@ -16,6 +16,12 @@ class MarketDepthCalulator:
 		for x in range(199,189):
 			print sells[x]
 
+	def percentDifference(self,buyData):
+		if buyData['GreaterBuyCoins'] == 'OKCoin':
+			return (buyData['BTCChina']['coinsExchanged'] / buyData['OKCoin']['coinsExchanged']) * 100
+		else:
+			return (buyData['okCoin']['coinsExchanged'] / buyData['BTCChina']['coinsExchanged']) * 100
+
 	def findGreaterBuyCoins(self,buyData):
 		if buyData['OKCoin']['coinsExchanged'] >= buyData['BTCChina']['coinsExchanged']:
 			return 'OKCoin'
@@ -39,6 +45,9 @@ class MarketDepthCalulator:
 		totalMarketBuyData['BTCChina'] = self.calculate_buy_bitcoins(money,btcchina_market_depth['asks'])
 
 		totalMarketBuyData['GreaterBuyCoins'] = self.findGreaterBuyCoins(totalMarketBuyData)
+
+		print self.percentDifference(totalMarketBuyData)
+
 		return totalMarketBuyData
 
 	#use the api information to find the marketdepth for the money amount provided 
