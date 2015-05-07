@@ -3,7 +3,7 @@ from MarketDepthCalulator import MarketDepthCalulator
 calc = MarketDepthCalulator()
 
 
-calc.chileExchangeBuyCoins(250.00)
+calc.chileExchangeBuyCoins(140000.00)
 
 # #testing the sell of bitcoins 
 # while True:
