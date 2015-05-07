@@ -8,6 +8,7 @@ class MarketDepthCalulator:
 	def __init__(self):
 		self.okcoin_market_depth_url = "https://www.okcoin.cn/api/depth.do"
 		self.btcchina_market_depth_url = "https://data.btcchina.com/data/orderbook?limit=200"
+		self.chiliBit_market_depth_url = "https://api.blinktrade.com/api/v1/CLP/orderbook?crypto_currency=BTC"
 		self.price = 0
 		self.quan = 1
 
@@ -29,6 +30,18 @@ class MarketDepthCalulator:
 		else:
 			return 'BTCChina'
 
+	def chileExchangeBuyCoins(self,money):
+
+		chiliBitStart_time = time.time()
+		chiliBit_market_depth = json.loads(urllib2.urlopen(self.chiliBit_market_depth_url).read())
+		print "chiliBit Execution Time = ",time.time() - chiliBitStart_time
+
+
+		totalMarketBuyData = dict()
+		totalMarketBuyData['chiliBit'] = self.calculate_buy_bitcoins(money,chiliBit_market_depth['asks'])
+		return totalMarketBuyData['chiliBit']
+
+	
 
 	#use both chinas exchanges to set up the dict, main funtion to be called outside the class
 	def chinaExchangeBuyCoins(self,money):
@@ -55,7 +68,7 @@ class MarketDepthCalulator:
 	def calculate_buy_bitcoins(self,money,sells):
 		currMoney = money
 		coinsExchanged = 0
-		depth = 199
+		depth = len(sells) - 1 
 
 		try:
 			while  currMoney > (sells[depth][self.price] * sells[depth][self.quan]) and currMoney > 0:
@@ -65,7 +78,7 @@ class MarketDepthCalulator:
 		#if the exception is thrown, the amount exceeded the limit that the api gives out
 		except Exception:
 			print "unable to calculate due to lack of sellers"
-			print "depth reached was {0}".format(depth)
+			print "depth reached was {0}".format(len(sells) - depth)
 			return
 
 		#catch the final seller and add the correct amount of bitcoins to the coinsExchanged var
@@ -74,13 +87,13 @@ class MarketDepthCalulator:
 
 		#testing accuracy 
 		print "total bitcoins bought: {0}".format(coinsExchanged)
-		print "total market depth reached: {0}".format(depth)
+		print "total market depth reached: {0}".format(len(sells) - depth)
 		print "total money spent: ${0}".format(money) 
 		print "average price: ${0}".format(money/coinsExchanged)
 		print " "
 
 		#return the necssary data
-		return dict(coinsExchanged=coinsExchanged,depth=depth)
+		return dict(coinsExchanged=coinsExchanged,depth=(len(sells) - depth))
 
 
 
