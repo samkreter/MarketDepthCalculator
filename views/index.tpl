@@ -23,12 +23,6 @@
 	  			<div class="heder-logo">Bitnexo</div> 
 	  		</header>
 		  	<div class="inner-container">
-			   <div id="real-exchange-rate" class="row">
-			   		<div class="col-md-2 center-block">
-			   			<label>Actual Exchange Rate</label>
-					    <div id="BTCChina-value"class="form-control boldedNumbers" ></div>
-			   		</div>
-			   </div>
 
 			    <form role="form">
 				  <div class="row">

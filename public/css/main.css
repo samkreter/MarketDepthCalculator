@@ -12,3 +12,9 @@ div.heder-logo{
 .shortBox{
 	width: 10rem;
 }
+.center-bootstrap{
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 10px;
+	float: inherit;
+}
