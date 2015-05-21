@@ -26,9 +26,9 @@ class MarketDepthCalculator:
 
 	def findGreaterBuyCoins(self,buyData):
 		if buyData['OKCoin']['coinsExchanged'] >= buyData['BTCChina']['coinsExchanged']:
-			return 'OKCoin'
+			return ['OKCoin','BTCChina']
 		else:
-			return 'BTCChina'
+			return ['BTCChina','OKCoin']
 
 	def chileExchangeSellCoins(self,coins):
 
