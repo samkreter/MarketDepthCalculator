@@ -39,7 +39,7 @@
 					  </div>
 					  <div class="form-group col-md-3">
 					    <label>Chilebit</label>
-					    <div id="BTC-value"class="form-control boldedNumbers" placeholder="Password"></div>
+					    <div id="ChileBit-value"class="form-control boldedNumbers" placeholder="Password"></div>
 					    <label>SurBTC</label>
 					    <div id="BTC-value"class="form-control boldedNumbers" placeholder="Password"></div>
 					  </div>

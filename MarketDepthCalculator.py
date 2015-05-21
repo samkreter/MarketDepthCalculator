@@ -8,7 +8,7 @@ class MarketDepthCalculator:
 	def __init__(self):
 		self.okcoin_market_depth_url = "https://www.okcoin.cn/api/depth.do"
 		self.btcchina_market_depth_url = "https://data.btcchina.com/data/orderbook?limit=200"
-		self.chiliBit_market_depth_url = "https://api.blinktrade.com/api/v1/CLP/orderbook?crypto_currency=BTC"
+		self.chileBit_market_depth_url = "https://api.blinktrade.com/api/v1/CLP/orderbook?crypto_currency=BTC"
 		self.price = 0
 		self.quan = 1
 
@@ -32,15 +32,13 @@ class MarketDepthCalculator:
 
 	def chileExchangeSellCoins(self,coins):
 
-		chiliBitStart_time = time.time()
-		chiliBit_market_depth = json.loads(urllib2.urlopen(self.chiliBit_market_depth_url).read())
-		print "chiliBit Execution Time = ",time.time() - chiliBitStart_time
-
-		print chiliBit_market_depth['bids']
+		chileBitStart_time = time.time()
+		chileBit_market_depth = json.loads(urllib2.urlopen(self.chileBit_market_depth_url).read())
+		print "chileBit Execution Time = ",time.time() - chileBitStart_time
 
 		totalMarketBuyData = dict()
-		totalMarketBuyData['chiliBit'] = self.calculate_sell_bitcoins(coins,chiliBit_market_depth['bids'])
-		return totalMarketBuyData['chiliBit']
+		totalMarketBuyData['ChileBit'] = self.calculate_sell_bitcoins(coins,chileBit_market_depth['bids'])
+		return totalMarketBuyData
 
 	
 
@@ -59,7 +57,7 @@ class MarketDepthCalculator:
 		totalMarketBuyData['OKCoin'] = self.calculate_buy_bitcoins(money,okcoin_market_depth['asks'])
 		totalMarketBuyData['BTCChina'] = self.calculate_buy_bitcoins(money,btcchina_market_depth['asks'])
 
-		totalMarketBuyData['GreaterBuyCoins'] = self.findGreaterBuyCoins(totalMarketBuyData)
+		totalMarketBuyData['Best'] = self.findGreaterBuyCoins(totalMarketBuyData)
 
 		totalMarketBuyData['PercentDifference'] = self.percentDifference(totalMarketBuyData)
 
@@ -95,16 +93,16 @@ class MarketDepthCalculator:
 
 		#return the necssary data
 		return dict(coinsExchanged=coinsExchanged,depth=(len(sells) - depth))
-		
+
 
 	def calculate_sell_bitcoins(self,coins,buys):
 		currSellCoins = coins 
-		moneyEchanged = 0
+		moneyExchanged = 0
 		depth = 0
 
 		try:
 			while currSellCoins > buys[depth][self.quan] and currSellCoins > 0:
-				moneyEchanged = moneyEchanged + (buys[depth][self.quan] * buys[depth][self.price])
+				moneyExchanged = moneyExchanged + (buys[depth][self.quan] * buys[depth][self.price])
 				currSellCoins = currSellCoins - buys[depth][self.quan]
 				depth = depth + 1 
 		except:
@@ -114,11 +112,13 @@ class MarketDepthCalculator:
 			sys.exit()
 
 		if currSellCoins > 0:
-			moneyEchanged = moneyEchanged + (buys[depth][self.price] * currSellCoins)
+			moneyExchanged = moneyExchanged + (buys[depth][self.price] * currSellCoins)
 
 		print "total bitcoins sold: {0}".format(coins)
 		print "total market depth reached: {0}".format(depth)
-		print "total money exchanged for: ${0}".format(moneyEchanged) 
+		print "total money exchanged for: ${0}".format(moneyExchanged) 
+
+		return dict(moneyExchanged=moneyExchanged,depth=depth)
 
 
 	

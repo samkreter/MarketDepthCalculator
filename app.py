@@ -35,8 +35,11 @@ def is_ajax():
 	currency = request.forms.get('currency')
 	amount = request.forms.get("amount-{0}".format(currency))
 	calc = MarketDepthCalculator()
-	totalMarketData = dict()
-	return calc.chinaExchangeBuyCoins(float(amount))
+	#total Market data
+	tmd = dict()
+	tmd['China'] = calc.chinaExchangeBuyCoins(float(amount))
+	tmd['Chile'] = calc.chileExchangeSellCoins(tmd['China'][tmd['China']['Best']]['coinsExchanged'])
+	return tmd
 	
 
 
