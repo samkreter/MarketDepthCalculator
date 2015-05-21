@@ -1,5 +1,5 @@
 from bottle import route,request, response, run, template, static_file
-from MarketDepthCalulator import MarketDepthCalulator
+from MarketDepthCalculator import MarketDepthCalculator
 
 # @get('/<filename:re:.*\.(jpg|png|gif|ico)>')
 # def images(filename):
@@ -34,7 +34,7 @@ def is_ajax():
 	print "ajax called triggered"
 	currency = request.forms.get('currency')
 	amount = request.forms.get("amount-{0}".format(currency))
-	calc = MarketDepthCalulator()
+	calc = MarketDepthCalculator()
 	totalMarketData = dict()
 	return calc.chinaExchangeBuyCoins(float(amount))
 	

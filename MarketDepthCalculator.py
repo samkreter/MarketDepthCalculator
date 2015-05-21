@@ -2,7 +2,7 @@ import urllib2 #making the api calls
 import json #parseing the api calls to json
 import time #testing the timing of the api calls
 
-class MarketDepthCalulator:
+class MarketDepthCalculator:
 	
 	#setting the url for the exhanges api
 	def __init__(self):
