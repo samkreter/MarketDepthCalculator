@@ -24,11 +24,14 @@ class MarketDepthCalculator:
 		print "average is : ",average
 		return (difference / average) * 100
 
-	def findGreaterBuyCoins(self,buyData):
-		if buyData['OKCoin']['coinsExchanged'] >= buyData['BTCChina']['coinsExchanged']:
-			return ['OKCoin','BTCChina']
-		else:
-			return ['BTCChina','OKCoin']
+	def findBest(self,data):
+		best = ''
+		amount = 0
+		for key, value in data.iteritems():
+			if value > amount:
+				amount = value
+				best = key 
+		return best 
 
 	def chileExchangeSellCoins(self,coins):
 
@@ -38,6 +41,7 @@ class MarketDepthCalculator:
 
 		totalMarketBuyData = dict()
 		totalMarketBuyData['ChileBit'] = self.calculate_sell_bitcoins(coins,chileBit_market_depth['bids'])
+		totalMarketBuyData['Best'] = self.findBest(totalMarketBuyData)
 		return totalMarketBuyData
 
 	
@@ -57,7 +61,7 @@ class MarketDepthCalculator:
 		totalMarketBuyData['OKCoin'] = self.calculate_buy_bitcoins(money,okcoin_market_depth['asks'])
 		totalMarketBuyData['BTCChina'] = self.calculate_buy_bitcoins(money,btcchina_market_depth['asks'])
 
-		totalMarketBuyData['Best'] = self.findGreaterBuyCoins(totalMarketBuyData)
+		totalMarketBuyData['Best'] = self.findBest(totalMarketBuyData)
 
 		totalMarketBuyData['PercentDifference'] = self.percentDifference(totalMarketBuyData)
 
