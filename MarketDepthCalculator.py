@@ -30,15 +30,16 @@ class MarketDepthCalculator:
 		else:
 			return 'BTCChina'
 
-	def chileExchangeBuyCoins(self,money):
+	def chileExchangeSellCoins(self,coins):
 
 		chiliBitStart_time = time.time()
 		chiliBit_market_depth = json.loads(urllib2.urlopen(self.chiliBit_market_depth_url).read())
 		print "chiliBit Execution Time = ",time.time() - chiliBitStart_time
 
+		print chiliBit_market_depth['bids']
 
 		totalMarketBuyData = dict()
-		totalMarketBuyData['chiliBit'] = self.calculate_buy_bitcoins(money,chiliBit_market_depth['asks'])
+		totalMarketBuyData['chiliBit'] = self.calculate_sell_bitcoins(coins,chiliBit_market_depth['bids'])
 		return totalMarketBuyData['chiliBit']
 
 	
@@ -94,34 +95,30 @@ class MarketDepthCalculator:
 
 		#return the necssary data
 		return dict(coinsExchanged=coinsExchanged,depth=(len(sells) - depth))
+		
 
+	def calculate_sell_bitcoins(self,coins,buys):
+		currSellCoins = coins 
+		moneyEchanged = 0
+		depth = 0
 
+		try:
+			while currSellCoins > buys[depth][self.quan] and currSellCoins > 0:
+				moneyEchanged = moneyEchanged + (buys[depth][self.quan] * buys[depth][self.price])
+				currSellCoins = currSellCoins - buys[depth][self.quan]
+				depth = depth + 1 
+		except:
+			print "unable to calculate due to lack of buyers"
+			print "depth reached was {0}".format(depth)
+			print "coins sold reached {0}".format(currSellCoins)
+			sys.exit()
 
+		if currSellCoins > 0:
+			moneyEchanged = moneyEchanged + (buys[depth][self.price] * currSellCoins)
 
-	#####still a work in progross for the selling section #######################################################
-
-	# def calulate_sell_bitcoins(self,coins):
-	# 	currSellCoins = coins 
-	# 	moneyEchanged = 0
-	# 	depth = 0
-
-	# 	try:
-	# 		while currSellCoins > self.buys[depth][self.quan] and currSellCoins > 0:
-	# 			moneyEchanged = moneyEchanged + (self.buys[depth][self.quan] * self.buys[depth][self.price])
-	# 			currSellCoins = currSellCoins - self.buys[depth][self.quan]
-	# 			depth = depth + 1 
-	# 	except:
-	# 		print "unable to calculate due to lack of buyers"
-	# 		print "depth reached was {0}".format(depth)
-	# 		print "coins sold reached {0}".format(currSellCoins)
-	# 		sys.exit()
-
-	# 	if currSellCoins < self.buys[depth][self.quan] and currSellCoins > 0:
-	# 		moneyEchanged = moneyEchanged + (self.buys[depth][self.price] * currSellCoins)
-
-	# 	print "total bitcoins sold: {0}".format(coins)
-	# 	print "total market depth reached: {0}".format(depth)
-	# 	print "total money exchanged for: ${0}".format(moneyEchanged) 
+		print "total bitcoins sold: {0}".format(coins)
+		print "total market depth reached: {0}".format(depth)
+		print "total money exchanged for: ${0}".format(moneyEchanged) 
 
 
 	
