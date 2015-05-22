@@ -45,13 +45,13 @@
 								  </div>
 								  <div id="China-Exchange-Group" class="form-group col-md-3">
 								    <label>BTCChina</label>
-								    <div id="BTCChina-value"class="form-control boldedNumbers has-success" ></div>
+								    <div id="BTCChinaRMB-CLP-value"class="form-control boldedNumbers has-success" ></div>
 									<label>OKCoin</label>
-								    <div id="OKCoin-value"class="form-control boldedNumbers" ></div>
+								    <div id="OKCoinRMB-CLP-value"class="form-control boldedNumbers" ></div>
 								  </div>
 								  <div class="form-group col-md-3">
 								    <label>Chilebit</label>
-								    <div id="ChileBit-value"class="form-control boldedNumbers" placeholder="Password"></div>
+								    <div id="ChileBitRMB-CLP-value"class="form-control boldedNumbers" placeholder="Password"></div>
 								    <label>SurBTC</label>
 								    <div id="BTC-value"class="form-control boldedNumbers" placeholder="Password"></div>
 								  </div>
@@ -74,16 +74,16 @@
 
 								  <div class="form-group col-md-3">
 								    <label>Chilebit</label>
-								    <div id="ChileBit-value"class="form-control boldedNumbers" placeholder="Password"></div>
+								    <div id="ChileBitCLP-RMB-value"class="form-control boldedNumbers" placeholder="Password"></div>
 								    <label>SurBTC</label>
 								    <div id="BTC-value"class="form-control boldedNumbers" placeholder="Password"></div>
 								  </div>
 
 								  <div id="China-Exchange-Group" class="form-group col-md-3">
 								    <label>BTCChina</label>
-								    <div id="BTCChina-value"class="form-control boldedNumbers has-success" ></div>
+								    <div id="BTCChinaCLP-RMB-value"class="form-control boldedNumbers has-success" ></div>
 									<label>OKCoin</label>
-								    <div id="OKCoin-value"class="form-control boldedNumbers" ></div>
+								    <div id="OKCoinCLP-RMB-value"class="form-control boldedNumbers" ></div>
 								  </div>
 
 								  <div class="form-group col-md-3">
