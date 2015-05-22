@@ -24,12 +24,17 @@ class MarketDepthCalculator:
 		print "average is : ",average
 		return (difference / average) * 100
 
-	def findGreaterBuyCoins(self,buyData):
-		if buyData['OKCoin']['coinsExchanged'] >= buyData['BTCChina']['coinsExchanged']:
-			return 'OKCoin'
-		else:
-			return 'BTCChina'
+	def findBest(self,data):
+		best = ''
+		amount = 0
+		for key, value in data.iteritems():
+			if value > amount:
+				amount = value
+				best = key 
+		return best 
 
+
+	#controling chile's exchanges in the selling of coins 
 	def chileExchangeSellCoins(self,coins):
 
 		chileBitStart_time = time.time()
@@ -38,9 +43,22 @@ class MarketDepthCalculator:
 
 		totalMarketBuyData = dict()
 		totalMarketBuyData['ChileBit'] = self.calculate_sell_bitcoins(coins,chileBit_market_depth['bids'])
+		totalMarketBuyData['Best'] = self.findBest(totalMarketBuyData)
 		return totalMarketBuyData
 
-	
+	#controling chile's exchanges for the buying of coins 
+	def chileExchangeBuyCoins(self,money):
+		#testing the time for each api call
+		chileBitStart_time = time.time()
+		chileBit_market_depth = json.loads(urllib2.urlopen(self.chileBit_market_depth_url).read())
+		print "chileBit Execution Time = ",time.time() - chileBitStart_time
+
+		totalMarketBuyData = dict()
+		totalMarketBuyData['ChileBit'] = self.calculate_buy_bitcoins(money,chileBit_market_depth['asks'],0)
+
+		totalMarketBuyData['Best'] = self.findBest(totalMarketBuyData)
+
+		#totalMarketBuyData['PercentDifference'] = self.percentDifference(totalMarketBuyData)
 
 	#use both chinas exchanges to set up the dict, main funtion to be called outside the class
 	def chinaExchangeBuyCoins(self,money):
@@ -54,26 +72,30 @@ class MarketDepthCalculator:
 		print "btcChina Execution Time = ",time.time() - btcChinaStart_time
 
 		totalMarketBuyData = dict()
-		totalMarketBuyData['OKCoin'] = self.calculate_buy_bitcoins(money,okcoin_market_depth['asks'])
-		totalMarketBuyData['BTCChina'] = self.calculate_buy_bitcoins(money,btcchina_market_depth['asks'])
+		totalMarketBuyData['OKCoin'] = self.calculate_buy_bitcoins(money,okcoin_market_depth['asks'],len(okcoin_market_depth['asks']) - 1 )
+		totalMarketBuyData['BTCChina'] = self.calculate_buy_bitcoins(money,btcchina_market_depth['asks'],len(btcchina_market_depth['asks']) - 1)
 
-		totalMarketBuyData['Best'] = self.findGreaterBuyCoins(totalMarketBuyData)
+		totalMarketBuyData['Best'] = self.findBest(totalMarketBuyData)
 
 		totalMarketBuyData['PercentDifference'] = self.percentDifference(totalMarketBuyData)
 
 		return totalMarketBuyData
 
 	#use the api information to find the marketdepth for the money amount provided 
-	def calculate_buy_bitcoins(self,money,sells):
+	#depth had to be passed in since the china exchange's asks array is in revese order of the other exchanges 
+	#this allows for the use of the same function for all the exhcnages 
+	def calculate_buy_bitcoins(self,money,sells,depth):
 		currMoney = money
 		coinsExchanged = 0
-		depth = len(sells) - 1 
+		varient = 1 if depth == 0 else -1
+		print "depth is ",depth
 
 		try:
 			while  currMoney > (sells[depth][self.price] * sells[depth][self.quan]) and currMoney > 0:
+				print "pq:",sells[depth][self.price],",",sells[depth][self.quan]," depth: ",depth
 				currMoney = currMoney - (sells[depth][self.price] * sells[depth][self.quan])
 				coinsExchanged = coinsExchanged + sells[depth][self.quan]
-				depth = depth - 1
+				depth = depth + varient
 		#if the exception is thrown, the amount exceeded the limit that the api gives out
 		except Exception:
 			print "unable to calculate due to lack of sellers"
