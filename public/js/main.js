@@ -21,7 +21,7 @@ $( function() {
 	$(document).on("submit", "form", function(event){
 	    event.preventDefault();
 	    $.ajax({
-	        url: '/is_ajax',
+	        url: '/amount_form_ajax',
 	        type: 'POST',            
 	        data: new FormData(this),
 	        processData: false,

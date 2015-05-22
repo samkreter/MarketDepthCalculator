@@ -88,11 +88,9 @@ class MarketDepthCalculator:
 		currMoney = money
 		coinsExchanged = 0
 		varient = 1 if depth == 0 else -1
-		print "depth is ",depth
 
 		try:
 			while  currMoney > (sells[depth][self.price] * sells[depth][self.quan]) and currMoney > 0:
-				print "pq:",sells[depth][self.price],",",sells[depth][self.quan]," depth: ",depth
 				currMoney = currMoney - (sells[depth][self.price] * sells[depth][self.quan])
 				coinsExchanged = coinsExchanged + sells[depth][self.quan]
 				depth = depth + varient
