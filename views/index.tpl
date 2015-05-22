@@ -40,8 +40,8 @@
 							  <div class="row">
 								  <div class="form-group col-md-3">
 								    <label>RMB</label>
-								    <input type="number" name="amount-RMB" class="form-control"  placeholder="Enter Amount">
-								    <div id="RMB-submit" class="btn btn-default btn-margin-fix">RMB Exchange</div>
+								    <input type="number" name="amount-RMB-CLP" class="form-control"  placeholder="Enter Amount">
+								    <div id="RMB-CLP-submit" class="btn btn-default btn-margin-fix">RMB Exchange</div>
 								  </div>
 								  <div id="China-Exchange-Group" class="form-group col-md-3">
 								    <label>BTCChina</label>
@@ -68,8 +68,8 @@
 							  <div class="row">
 								  <div class="form-group col-md-3">
 								    <label>CLP</label>
-								    <input type="number" name="amount-CLP" class="form-control" name="CLP-Ammout" placeholder="Enter Amount">
-								    <div id="CLP-submit" class="btn btn-default btn-margin-fix">CLP Exchange</div>
+								    <input type="number"  class="form-control" name="CLP-RMB-Ammout" placeholder="Enter Amount">
+								    <div id="CLP-RMB-submit" class="btn btn-default btn-margin-fix">CLP Exchange</div>
 								  </div>
 
 								  <div class="form-group col-md-3">

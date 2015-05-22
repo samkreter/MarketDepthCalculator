@@ -1,17 +1,19 @@
 $( function() {
 
+	//creating the tab funtionallity with bootstrap 
 	$('#myTab a').click(function (e) {
 	  e.preventDefault()
 	  $(this).tab('show')
 	})
 
+
 	//set the correct data for which button the user clicked 
-	$('#CLP-submit').click(function(){
-		$('#currency-input-hidden').val("CLP");
+	$('#CLP-RMB-submit').click(function(){
+		$('#currency-input-hidden').val("CLP-RMB");
 		$(this).submit();
 	})
-	$('#RMB-submit').click(function(){
-		$('#currency-input-hidden').val("RMB");
+	$('#RMB-CLP-submit').click(function(){
+		$('#currency-input-hidden').val("RMB-CLP");
 		$(this).submit();
 	})
 	
