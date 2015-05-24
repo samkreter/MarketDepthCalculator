@@ -39,9 +39,9 @@ $( function() {
     	console.log(chile)
 
     	//add the bitcoin amounts to the appropriote boxes 
-    	$('#BTCChinaCLP-RMB-value').html(china['BTCChina']['moneyExchanged']);
-    	$('#OKCoinCLP-RMB-value').html(china['OKCoin']['moneyExchanged']);
-    	$('#ChileBitCLP-RMB-value').html(chile['ChileBit']['coinsExchanged']);
+    	$('#BTCChinaCLP-RMB-value').html(china['BTCChina']['moneyExchanged'].toFixed(8));
+    	$('#OKCoinCLP-RMB-value').html(china['OKCoin']['moneyExchanged'].toFixed(8));
+    	$('#ChileBitCLP-RMB-value').html(chile['ChileBit']['coinsExchanged'].toFixed(8));
     	console.log(china['BTCChina']['coinsExchanged'])
     	//create the best path green borders 
     	$('#'+china['Best']+'CLP-RMB-value').css("border-color","green");
