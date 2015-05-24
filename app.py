@@ -37,11 +37,12 @@ def amount_form_ajax():
 	calc = MarketDepthCalculator()
 	#total Market data
 	tmd = dict()
-	if (currency == 'CLP-RMB'):
+	if currency == 'CLP-RMB':
 		tmd['currency'] = 'CLP-RMB'
 		tmd['Chile'] = calc.chileExchangeBuyCoins(amount)
+		print tmd['Chile']
 		tmd['China'] = calc.chinaExchangeSellCoins(tmd['Chile'][tmd['Chile']['Best']]['coinsExchanged'])
-	elif(currency == 'RMB-CLP'):
+	elif currency == 'RMB-CLP':
 		tmd['currency'] = 'RMB-CLP'
 		tmd['China'] = calc.chinaExchangeBuyCoins(float(amount))
 		tmd['Chile'] = calc.chileExchangeSellCoins(tmd['China'][tmd['China']['Best']]['coinsExchanged'])

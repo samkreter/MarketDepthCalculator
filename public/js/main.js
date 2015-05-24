@@ -9,11 +9,9 @@ $( function() {
 
 	//set the correct data for which button the user clicked 
 	$('#CLP-RMB-submit').click(function(){
-		$('#currency-input-hidden').val("CLP-RMB");
 		$(this).submit();
 	})
 	$('#RMB-CLP-submit').click(function(){
-		$('#currency-input-hidden').val("RMB-CLP");
 		$(this).submit();
 	})
 	
@@ -39,9 +37,9 @@ $( function() {
     	chile = data['Chile']
 
     	//add the bitcoin amounts to the appropriote boxes 
-    	$('#BTCChinaCLP-RMB-value').html(china['BTCChina']['coinsExchanged'].toFixed(8));
-    	$('#OKCoinCLP-RMB-value').html(china['OKCoin']['coinsExchanged'].toFixed(8));
-    	$('#ChileBitCLP-RMB-value').html(chile['ChileBit']['moneyExchanged'].toFixed(8));
+    	$('#BTCChinaCLP-RMB-value').html(china['BTCChina']['coinsExchanged']);
+    	$('#OKCoinCLP-RMB-value').html(china['OKCoin']['coinsExchanged']);
+    	$('#ChileBitCLP-RMB-value').html(chile['ChileBit']['moneyExchanged']);
 
     	//create the best path green borders 
     	$('#'+china['Best']+'CLP-RMB-value').css("border-color","green");

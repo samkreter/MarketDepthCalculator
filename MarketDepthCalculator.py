@@ -59,6 +59,25 @@ class MarketDepthCalculator:
 		totalMarketBuyData['Best'] = self.findBest(totalMarketBuyData)
 
 		#totalMarketBuyData['PercentDifference'] = self.percentDifference(totalMarketBuyData)
+		return totalMarketBuyData
+
+	#controling chile's exchanges in the selling of coins 
+	def chinaExchangeSellCoins(self,coins):
+
+		okCoinStart_time = time.time()
+		okcoin_market_depth = json.loads(urllib2.urlopen(self.okcoin_market_depth_url).read())
+		print "okCoin Execution Time = ",time.time() - okCoinStart_time
+
+		btcChinaStart_time = time.time()
+		btcchina_market_depth = json.loads(urllib2.urlopen(self.btcchina_market_depth_url).read())
+		print "btcChina Execution Time = ",time.time() - btcChinaStart_time
+
+		totalMarketBuyData = dict()
+		totalMarketBuyData['OKCoin'] = self.calculate_sell_bitcoins(coins,okcoin_market_depth['bids'])
+		totalMarketBuyData['BTCChina'] = self.calculate_sell_bitcoins(coins,btcchina_market_depth['bids'])
+		totalMarketBuyData['Best'] = self.findBest(totalMarketBuyData)
+		print totalMarketBuyData['Best']
+		return totalMarketBuyData
 
 	#use both chinas exchanges to set up the dict, main funtion to be called outside the class
 	def chinaExchangeBuyCoins(self,money):

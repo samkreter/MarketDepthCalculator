@@ -60,7 +60,7 @@
 								    <div type="number" name="amount-CLP" class="form-control" name="CLP-Ammout" placeholder="Enter Amount"></div>
 								  </div>
 								</div>
-								<input id="currency-input-hidden" type="hidden" name="currency" value="none">
+								<input id="currency-input-hidden" type="hidden" name="currency" value="RMB-CLP">
 						</form>
 
 
@@ -68,7 +68,7 @@
 							  <div class="row">
 								  <div class="form-group col-md-3">
 								    <label>CLP</label>
-								    <input type="number"  class="form-control" name="CLP-RMB-Ammout" placeholder="Enter Amount">
+								    <input type="number"  class="form-control" name="amount-CLP-RMB" placeholder="Enter Amount">
 								    <div id="CLP-RMB-submit" class="btn btn-default btn-margin-fix">CLP Exchange</div>
 								  </div>
 
@@ -93,7 +93,7 @@
 								  
 								  
 								</div>
-								<input id="currency-input-hidden" type="hidden" name="currency" value="none">
+								<input id="currency-input-hidden" type="hidden" name="currency" value="CLP-RMB">
 						</form>
 				    </div>
 
