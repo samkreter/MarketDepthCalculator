@@ -97,6 +97,8 @@
 						</form>
 				    </div>
 
+<!-- ########################################################## -->
+
 
 				    <!-- RMB to BRL -->
 				    <div role="tabpanel" class="tab-pane" id="RMB-BRL">
@@ -104,27 +106,25 @@
 							  <div class="row">
 								  <div class="form-group col-md-3">
 								    <label>RMB</label>
-								    <input type="number" name="amount-RMB" class="form-control"  placeholder="Enter Amount">
-								    <div id="RMB-submit" class="btn btn-default btn-margin-fix">RMB Exchange</div>
+								    <input type="number" name="amount-RMB-BRL" class="form-control"  placeholder="Enter Amount">
+								    <div id="RMB-BRL-submit" class="btn btn-default btn-margin-fix">RMB Exchange</div>
 								  </div>
 								  <div id="China-Exchange-Group" class="form-group col-md-3">
 								    <label>BTCChina</label>
-								    <div id="BTCChina-value"class="form-control boldedNumbers has-success" ></div>
+								    <div id="BTCChinaRMB-BRL-value"class="form-control boldedNumbers has-success" ></div>
 									<label>OKCoin</label>
-								    <div id="OKCoin-value"class="form-control boldedNumbers" ></div>
+								    <div id="OKCoinRMB-BRL-value"class="form-control boldedNumbers" ></div>
 								  </div>
 								  <div class="form-group col-md-3">
 								    <label>FoxBit</label>
-								    <div id="ChileBit-value"class="form-control boldedNumbers" placeholder="Password"></div>
-								    <label>Placeholder</label>
-								    <div id="BTC-value"class="form-control boldedNumbers" placeholder="Password"></div>
+								    <div id="FoxBitRMB-BRL-value"class="form-control boldedNumbers"></div>
 								  </div>
 								  <div class="form-group col-md-3">
 								    <label>BRL</label>
-								    <div type="number" name="amount-CLP" class="form-control" name="CLP-Ammout" placeholder="Enter Amount"></div>
+								    <div id="RMB-BRL-Result" type="number" class="form-control boldedNumbers" ></div>
 								  </div>
 								</div>
-								<input id="currency-input-hidden" type="hidden" name="currency" value="none">
+								<input id="currency-input-hidden" type="hidden" name="currency" value="RMB-BRL">
 						</form>
 
 
@@ -132,38 +132,98 @@
 							  <div class="row">
 								  <div class="form-group col-md-3">
 								    <label>BRL</label>
-								    <input type="number" name="amount-CLP" class="form-control" name="CLP-Ammout" placeholder="Enter Amount">
-								    <div id="CLP-submit" class="btn btn-default btn-margin-fix">BRL Exchange</div>
+								    <input type="number" name="amount-BRL-RMB" class="form-control" class="btn btn-default btn-margin-fix">BRL Exchange</div>
 								  </div>
 
 								  <div class="form-group col-md-3">
 								    <label>FoxBit</label>
-								    <div id="ChileBit-value"class="form-control boldedNumbers" placeholder="Password"></div>
-								    <label>Placeholder</label>
-								    <div id="BTC-value"class="form-control boldedNumbers" placeholder="Password"></div>
+								    <div id="FoxBitBRL-RMB-value"class="form-control boldedNumbers"></div>
 								  </div>
 
 								  <div id="China-Exchange-Group" class="form-group col-md-3">
 								    <label>BTCChina</label>
-								    <div id="BTCChina-value"class="form-control boldedNumbers has-success" ></div>
+								    <div id="BTCChinaBRL-RMB-value"class="form-control boldedNumbers has-success" ></div>
 									<label>OKCoin</label>
-								    <div id="OKCoin-value"class="form-control boldedNumbers" ></div>
+								    <div id="OKCoinBRL-RMB-value"class="form-control boldedNumbers" ></div>
 								  </div>
 
 								  <div class="form-group col-md-3">
 								    <label>RMB</label>
-								    <div type="number" name="amount-CLP" class="form-control" name="CLP-Ammout" placeholder="Enter Amount"></div>
+								    <div id="BRL-RMB-Result" type="number" class="form-control boldedNumbers"></div>
 								  </div>
 								  
 								  
 								</div>
-								<input id="currency-input-hidden" type="hidden" name="currency" value="none">
+								<input id="currency-input-hidden" type="hidden" name="currency" value="BRL-RMB">
 						</form>
 
 
 				    </div>
-				 
-				  </div>
+			<!-- ##################################################################### -->
+				 	<div class="tab-content">
+					    <div role="tabpanel" class="tab-pane active" id="RMB-CLP">
+					    	<form role="form">
+								  <div class="row">
+									  <div class="form-group col-md-3">
+									    <label>RMB</label>
+									    <input type="number" name="amount-RMB-CLP" class="form-control"  placeholder="Enter Amount">
+									    <div id="RMB-CLP-submit" class="btn btn-default btn-margin-fix">RMB Exchange</div>
+									  </div>
+									  <div id="China-Exchange-Group" class="form-group col-md-3">
+									    <label>BTCChina</label>
+									    <div id="BTCChinaRMB-CLP-value"class="form-control boldedNumbers has-success" ></div>
+										<label>OKCoin</label>
+									    <div id="OKCoinRMB-CLP-value"class="form-control boldedNumbers" ></div>
+									  </div>
+									  <div class="form-group col-md-3">
+									    <label>Chilebit</label>
+									    <div id="ChileBitRMB-CLP-value"class="form-control boldedNumbers" placeholder="Password"></div>
+									    <label>SurBTC</label>
+									    <div id="BTC-value"class="form-control boldedNumbers"></div>
+									  </div>
+									  <div class="form-group col-md-3">
+									    <label>CLP</label>
+									    <div id="RMB-CLP-Result"type="number"  class="form-control boldedNumbers" ></div>
+									  </div>
+									</div>
+									<input id="currency-input-hidden" type="hidden" name="currency" value="RMB-CLP">
+							</form>
+
+
+							<form role="form">
+								  <div class="row">
+									  <div class="form-group col-md-3">
+									    <label>CLP</label>
+									    <input type="number"  class="form-control" name="amount-CLP-RMB" placeholder="Enter Amount">
+									    <div id="CLP-RMB-submit" class="btn btn-default btn-margin-fix">CLP Exchange</div>
+									  </div>
+
+									  <div class="form-group col-md-3">
+									    <label>Chilebit</label>
+									    <div id="ChileBitCLP-RMB-value"class="form-control boldedNumbers" placeholder="Password"></div>
+									    <label>SurBTC</label>
+									    <div id="BTC-value"class="form-control boldedNumbers" placeholder="Password"></div>
+									  </div>
+
+									  <div id="China-Exchange-Group" class="form-group col-md-3">
+									    <label>BTCChina</label>
+									    <div id="BTCChinaCLP-RMB-value"class="form-control boldedNumbers has-success" ></div>
+										<label>OKCoin</label>
+									    <div id="OKCoinCLP-RMB-value"class="form-control boldedNumbers" ></div>
+									  </div>
+
+									  <div class="form-group col-md-3">
+									    <label>RMB</label>
+									    <div id="CLP-RMB-Result" type="number" class="form-control boldedNumbers" ></div>
+									  </div>
+									  
+									  
+									</div>
+									<input id="currency-input-hidden" type="hidden" name="currency" value="CLP-RMB">
+							</form>
+					    </div>
+
+				    </div>
 
 				</div>
 			    

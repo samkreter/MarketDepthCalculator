@@ -1,12 +1,5 @@
 $( function() {
 
-	//creating the tab funtionallity with bootstrap 
-	$('#myTab a').click(function (e) {
-	  e.preventDefault()
-	  $(this).tab('show')
-	})
-
-
 	//set the correct data for which button the user clicked 
 	$('#CLP-RMB-submit').click(function(){
 		$(this).submit();
