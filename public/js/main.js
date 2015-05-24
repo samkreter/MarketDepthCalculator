@@ -35,12 +35,14 @@ $( function() {
 	function ClpRmb(data){
 		china = data['China']
     	chile = data['Chile']
+    	console.log(china)
+    	console.log(chile)
 
     	//add the bitcoin amounts to the appropriote boxes 
-    	$('#BTCChinaCLP-RMB-value').html(china['BTCChina']['coinsExchanged']);
-    	$('#OKCoinCLP-RMB-value').html(china['OKCoin']['coinsExchanged']);
-    	$('#ChileBitCLP-RMB-value').html(chile['ChileBit']['moneyExchanged']);
-
+    	$('#BTCChinaCLP-RMB-value').html(china['BTCChina']['moneyExchanged']);
+    	$('#OKCoinCLP-RMB-value').html(china['OKCoin']['moneyExchanged']);
+    	$('#ChileBitCLP-RMB-value').html(chile['ChileBit']['coinsExchanged']);
+    	console.log(china['BTCChina']['coinsExchanged'])
     	//create the best path green borders 
     	$('#'+china['Best']+'CLP-RMB-value').css("border-color","green");
     	$('#'+chile['Best']+'CLP-RMB-value').css("border-color","green");
