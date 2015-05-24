@@ -53,11 +53,11 @@
 								    <label>Chilebit</label>
 								    <div id="ChileBitRMB-CLP-value"class="form-control boldedNumbers" placeholder="Password"></div>
 								    <label>SurBTC</label>
-								    <div id="BTC-value"class="form-control boldedNumbers" placeholder="Password"></div>
+								    <div id="BTC-value"class="form-control boldedNumbers"></div>
 								  </div>
 								  <div class="form-group col-md-3">
 								    <label>CLP</label>
-								    <div type="number" name="amount-CLP" class="form-control" name="CLP-Ammout" placeholder="Enter Amount"></div>
+								    <div id="RMB-CLP-Result"type="number"  class="form-control boldedNumbers" ></div>
 								  </div>
 								</div>
 								<input id="currency-input-hidden" type="hidden" name="currency" value="RMB-CLP">
@@ -88,7 +88,7 @@
 
 								  <div class="form-group col-md-3">
 								    <label>RMB</label>
-								    <div type="number" name="amount-CLP" class="form-control" name="CLP-Ammout" placeholder="Enter Amount"></div>
+								    <div id="CLP-RMB-Result" type="number" class="form-control boldedNumbers" ></div>
 								  </div>
 								  
 								  
