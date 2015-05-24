@@ -29,16 +29,24 @@ def stylesheets(filename):
 
 
 #App routes
-@route('/is_ajax', method="POST")
-def is_ajax():
+@route('/amount_form_ajax', method="POST")
+def amount_form_ajax():
 	print "ajax called triggered"
 	currency = request.forms.get('currency')
-	amount = request.forms.get("amount-{0}".format(currency))
+	amount = float(request.forms.get("amount-{0}".format(currency)))
 	calc = MarketDepthCalculator()
 	#total Market data
 	tmd = dict()
-	tmd['China'] = calc.chinaExchangeBuyCoins(float(amount))
-	tmd['Chile'] = calc.chileExchangeSellCoins(tmd['China'][tmd['China']['Best']]['coinsExchanged'])
+	if currency == 'CLP-RMB':
+		tmd['currency'] = 'CLP-RMB'
+		tmd['Chile'] = calc.chileExchangeBuyCoins(amount)
+		print tmd['Chile']
+		tmd['China'] = calc.chinaExchangeSellCoins(tmd['Chile'][tmd['Chile']['Best']]['coinsExchanged'])
+	elif currency == 'RMB-CLP':
+		tmd['currency'] = 'RMB-CLP'
+		tmd['China'] = calc.chinaExchangeBuyCoins(float(amount))
+		tmd['Chile'] = calc.chileExchangeSellCoins(tmd['China'][tmd['China']['Best']]['coinsExchanged'])
+	
 	return tmd
 	
 
