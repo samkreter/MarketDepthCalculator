@@ -1,6 +1,6 @@
 $( function() {
 
-	
+
 	function RmbClp(data){
 		china = data['China']
     	chile = data['Chile']
@@ -80,6 +80,7 @@ $( function() {
 
 	$(document).on("submit", "form", function(event){
 	    event.preventDefault();
+	    $('#loading-modal').modal('show');
 	    $.ajax({
 	        url: '/amount_form_ajax',
 	        type: 'POST',            
@@ -94,7 +95,15 @@ $( function() {
 	        		case 'CLP-RMB':
 	        			ClpRmb(data);
 	        			break;
+	        		case 'RMB-BRL':
+	        			RmbBrl(data);
+	        			break;
+	        		case 'BRL-RMB':
+	        			BrlRmb(data);
+	        			break;
 	        	}
+
+	        	$('#loading-modal').modal('hide');
 	        	
 	        }
 	    });

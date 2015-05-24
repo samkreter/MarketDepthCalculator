@@ -9,6 +9,7 @@ class MarketDepthCalculator:
 		self.okcoin_market_depth_url = "https://www.okcoin.cn/api/depth.do"
 		self.btcchina_market_depth_url = "https://data.btcchina.com/data/orderbook?limit=200"
 		self.chileBit_market_depth_url = "https://api.blinktrade.com/api/v1/CLP/orderbook?crypto_currency=BTC"
+		self.foxBit_market_depth_url = "https://api.blinktrade.com/api/v1/BRL/orderbook?crypto_currency=BTC"
 		self.price = 0
 		self.quan = 1
 
@@ -30,9 +31,37 @@ class MarketDepthCalculator:
 		for key, value in data.iteritems():
 			if value > amount:
 				amount = value
-				best = key 
+				best = key
 		return best 
+	
 
+	#controling Brazils's exchanges in the selling of coins 
+	def brazilExchangeSellCoins(self,coins):
+
+		foxBitStart_time = time.time()
+		foxBit_market_depth = json.loads(urllib2.urlopen(self.foxBit_market_depth_url).read())
+		print "foxBit Execution Time = ",time.time() - foxBitStart_time
+
+		totalMarketBuyData = dict()
+		totalMarketBuyData['FoxBit'] = self.calculate_sell_bitcoins(coins,foxBit_market_depth['bids'])
+		totalMarketBuyData['Best'] = self.findBest(totalMarketBuyData)
+		return totalMarketBuyData			
+
+
+	
+	#controling brazils's exchanges for the buying of coins 
+	def brazilExchangeBuyCoins(self,money):
+		#testing the time for each api call
+		foxBitStart_time = time.time()
+		foxBit_market_depth = json.loads(urllib2.urlopen(self.foxBit_market_depth_url).read())
+		print "foxBit Execution Time = ",time.time() - foxBitStart_time
+
+		totalMarketBuyData = dict()
+		totalMarketBuyData['FoxBit'] = self.calculate_buy_bitcoins(money,foxBit_market_depth['asks'],0)
+		totalMarketBuyData['Best'] = self.findBest(totalMarketBuyData)
+
+		#totalMarketBuyData['PercentDifference'] = self.percentDifference(totalMarketBuyData)
+		return totalMarketBuyData
 
 	#controling chile's exchanges in the selling of coins 
 	def chileExchangeSellCoins(self,coins):

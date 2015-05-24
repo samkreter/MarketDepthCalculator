@@ -38,15 +38,25 @@ def amount_form_ajax():
 	#total Market data
 	tmd = dict()
 	if currency == 'CLP-RMB':
+		print "CLP-RMB ajax"
 		tmd['currency'] = 'CLP-RMB'
 		tmd['Chile'] = calc.chileExchangeBuyCoins(amount)
-		print tmd['Chile']
 		tmd['China'] = calc.chinaExchangeSellCoins(tmd['Chile'][tmd['Chile']['Best']]['coinsExchanged'])
 	elif currency == 'RMB-CLP':
+		print "RMB-CLP ajax"
 		tmd['currency'] = 'RMB-CLP'
 		tmd['China'] = calc.chinaExchangeBuyCoins(float(amount))
 		tmd['Chile'] = calc.chileExchangeSellCoins(tmd['China'][tmd['China']['Best']]['coinsExchanged'])
-	
+	elif currency == 'RMB-BRL':
+		print "RMB-BRL ajax"
+		tmd['currency'] = 'RMB-BRL'
+		tmd['China'] = calc.chinaExchangeBuyCoins(float(amount))
+		tmd['Brazil'] = calc.brazilExchangeSellCoins(tmd['China'][tmd['China']['Best']]['coinsExchanged'])
+	elif currency == 'BRL-RMB':
+		print "BRL-RMB ajax"
+		tmd['currency'] = 'BRL-RMB'
+		tmd['Brazil'] = calc.brazilExchangeBuyCoins(amount)
+		tmd['China'] = calc.chinaExchangeSellCoins(tmd['Brazil'][tmd['Brazil']['Best']]['coinsExchanged'])
 	return tmd
 	
 

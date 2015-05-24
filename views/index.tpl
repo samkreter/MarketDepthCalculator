@@ -24,8 +24,15 @@
 	  		</header>
 		  	<div class="inner-container">
 
-		  		<div role="tabpanel">
+		  		<div id="loading-modal"class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="loading-modal" aria-hidden="true">
+					<div class="modal-dialog modal-sm">
+						<div class="modal-content">
+							<span class="loading">LOADING...</span>
+						</div>
+	 				</div>
+				</div>
 
+		  		<div role="tabpanel">
 				  <!-- Nav tabs -->
 				  <ul class="nav nav-tabs" role="tablist">
 				    <li role="presentation" class="active"><a href="#RMB-CLP" aria-controls="RMB-CLP" role="tab" data-toggle="tab">RMB - CLP</a></li>
@@ -133,6 +140,7 @@
 								  <div class="form-group col-md-3">
 								    <label>BRL</label>
 								    <input type="number" name="amount-BRL-RMB" class="form-control" class="btn btn-default btn-margin-fix">
+								    <button class="btn btn-default btn-margin-fix">BRL Exchange</button>
 								  </div>
 
 								  <div class="form-group col-md-3">

@@ -18,3 +18,7 @@ div.heder-logo{
 	margin-bottom: 10px;
 	float: inherit;
 }
+.loading{
+	font-size: 40px;
+	font-weight: bold;
+}
