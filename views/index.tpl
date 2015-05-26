@@ -166,6 +166,70 @@
 						</form>
 					</div>
 
+					<!-- ########################################################## -->
+
+
+				    <!-- RMB to VEF -->
+				    <div role="tabpanel" class="tab-pane" id="RMB-VEF">
+				    	<form role="form">
+							  <div class="row">
+								  <div class="form-group col-md-3">
+								    <label>RMB</label>
+								    <input type="number" name="amount-RMB-VEF" class="form-control">
+								    <button class="btn btn-default btn-margin-fix">RMB Exchange</button>
+								  </div>
+								  <div id="China-Exchange-Group" class="form-group col-md-3">
+								    <label>BTCChina</label>
+								    <div id="BTCChinaRMB-VEF-value"class="form-control boldedNumbers has-success" ></div>
+									<label>OKCoin</label>
+								    <div id="OKCoinRMB-VEF-value"class="form-control boldedNumbers" ></div>
+								  </div>
+								  <div class="form-group col-md-3">
+								    <label>SurBitCoin</label>
+								    <div id="FoxBitRMB-VEF-value"class="form-control boldedNumbers"></div>
+								  </div>
+								  <div class="form-group col-md-3">
+								    <label>VEF</label>
+								    <div id="RMB-VEF-Result" type="number" class="form-control boldedNumbers" ></div>
+								  </div>
+								</div>
+								<input id="currency-input-hidden" type="hidden" name="currency" value="RMB-VEF">
+						</form>
+
+
+						<form role="form">
+							  <div class="row">
+								  <div class="form-group col-md-3">
+								    <label>VEF</label>
+								    <input type="number" name="amount-VEF-RMB" class="form-control" class="btn btn-default btn-margin-fix">
+								    <button class="btn btn-default btn-margin-fix">VEF Exchange</button>
+								  </div>
+
+								  <div class="form-group col-md-3">
+								    <label>SurBitCoin</label>
+								    <div id="FoxBitVEF-RMB-value"class="form-control boldedNumbers"></div>
+								  </div>
+
+								  <div id="China-Exchange-Group" class="form-group col-md-3">
+								    <label>BTCChina</label>
+								    <div id="BTCChinaVEF-RMB-value"class="form-control boldedNumbers has-success" ></div>
+									<label>OKCoin</label>
+								    <div id="OKCoinVEF-RMB-value"class="form-control boldedNumbers" ></div>
+								  </div>
+
+								  <div class="form-group col-md-3">
+								    <label>RMB</label>
+								    <div id="VEF-RMB-Result" type="number" class="form-control boldedNumbers"></div>
+								  </div>
+								  
+								  
+								</div>
+								<input id="currency-input-hidden" type="hidden" name="currency" value="VEF-RMB">
+						</form>
+					</div>
+
+				</div>
+
 				</div>
 
 

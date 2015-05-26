@@ -47,6 +47,7 @@ def amount_form_ajax():
 		tmd['currency'] = 'RMB-CLP'
 		tmd['China'] = calc.chinaExchangeBuyCoins(float(amount))
 		tmd['Chile'] = calc.chileExchangeSellCoins(tmd['China'][tmd['China']['Best']]['coinsExchanged'])
+	#RMB-BRL tab 
 	elif currency == 'RMB-BRL':
 		print "RMB-BRL ajax"
 		tmd['currency'] = 'RMB-BRL'
@@ -57,6 +58,18 @@ def amount_form_ajax():
 		tmd['currency'] = 'BRL-RMB'
 		tmd['Brazil'] = calc.brazilExchangeBuyCoins(amount)
 		tmd['China'] = calc.chinaExchangeSellCoins(tmd['Brazil'][tmd['Brazil']['Best']]['coinsExchanged'])
+	#RMB-VEF tab
+	elif currency == 'RMB-VEF':
+		print "RMB-VEF ajax"
+		tmd['currency'] = 'RMB-VEF'
+		tmd['China'] = calc.chinaExchangeBuyCoins(float(amount))
+		tmd['Venezuela'] = calc.venezuelaExchangeSellCoins(tmd['China'][tmd['China']['Best']]['coinsExchanged'])
+	elif currency == 'VEF-RMB':
+		print "VEF-RMB ajax"
+		tmd['currency'] = 'VEF-RMB'
+		tmd['Venezuela'] = calc.venezuelaExchangeBuyCoins(amount)
+		tmd['China'] = calc.chinaExchangeSellCoins(tmd['Venezuela'][tmd['Venezuela']['Best']]['coinsExchanged'])
+
 	return tmd
 	
 
