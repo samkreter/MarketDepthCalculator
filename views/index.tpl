@@ -37,6 +37,7 @@
 				  <ul class="nav nav-tabs" role="tablist">
 				    <li role="presentation" class="active"><a href="#RMB-CLP" aria-controls="RMB-CLP" role="tab" data-toggle="tab">RMB - CLP</a></li>
 				    <li role="presentation"><a href="#RMB-BRL" aria-controls="RMB-BRL" role="tab" data-toggle="tab">RMB - BRL</a></li>
+				    <li role="presentation"><a href="#RMB-VEF" aria-controls="RMB-VEF" role="tab" data-toggle="tab">RMB - VEF</a></li>
 				  </ul>
 
 
