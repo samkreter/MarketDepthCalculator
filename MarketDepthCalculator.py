@@ -6,10 +6,16 @@ class MarketDepthCalculator:
 	
 	#setting the url for the exhanges api
 	def __init__(self):
+		#CHina's exchanges
 		self.okcoin_market_depth_url = "https://www.okcoin.cn/api/depth.do"
 		self.btcchina_market_depth_url = "https://data.btcchina.com/data/orderbook?limit=200"
+		#Chile's Exchanges
 		self.chileBit_market_depth_url = "https://api.blinktrade.com/api/v1/CLP/orderbook?crypto_currency=BTC"
+		#Brazil's Exchanges
 		self.foxBit_market_depth_url = "https://api.blinktrade.com/api/v1/BRL/orderbook?crypto_currency=BTC"
+		#Venezuela's exhcnages
+		self.surBitCoin_market_depth_url = "https://api.blinktrade.com/api/v1/VEF/orderbook?crypto_currency=BTC"
+		
 		self.price = 0
 		self.quan = 1
 
@@ -34,6 +40,34 @@ class MarketDepthCalculator:
 				best = key
 		return best 
 	
+	#controling venezuela's exchanges in the selling of coins 
+	def venezuelaExchangeSellCoins(self,coins):
+
+		surBitCoinStart_time = time.time()
+		surBitCoin_market_depth = json.loads(urllib2.urlopen(self.surBitCoin_market_depth_url).read())
+		print "surBitCoin Execution Time = ",time.time() - surBitCoinStart_time
+
+		totalMarketBuyData = dict()
+		totalMarketBuyData['SurBitCoin'] = self.calculate_sell_bitcoins(coins,surBitCoin_market_depth['bids'])
+		totalMarketBuyData['Best'] = self.findBest(totalMarketBuyData)
+		return totalMarketBuyData	
+
+	#controling venezuelas's exchanges for the buying of coins 
+	def venezuelaExchangeBuyCoins(self,money):
+		#testing the time for each api call
+		surBitCoinStart_time = time.time()
+		surBitCoin_market_depth = json.loads(urllib2.urlopen(self.surBitCoin_market_depth_url).read())
+		print "surBitCoin Execution Time = ",time.time() - surBitCoinStart_time
+
+		totalMarketBuyData = dict()
+		totalMarketBuyData['surBitCoin'] = self.calculate_buy_bitcoins(money,surBitCoin_market_depth['asks'],0)
+		totalMarketBuyData['Best'] = self.findBest(totalMarketBuyData)
+
+		#totalMarketBuyData['PercentDifference'] = self.percentDifference(totalMarketBuyData)
+		return totalMarketBuyData
+
+
+
 
 	#controling Brazils's exchanges in the selling of coins 
 	def brazilExchangeSellCoins(self,coins):
@@ -45,10 +79,8 @@ class MarketDepthCalculator:
 		totalMarketBuyData = dict()
 		totalMarketBuyData['FoxBit'] = self.calculate_sell_bitcoins(coins,foxBit_market_depth['bids'])
 		totalMarketBuyData['Best'] = self.findBest(totalMarketBuyData)
-		return totalMarketBuyData			
+		return totalMarketBuyData	
 
-
-	
 	#controling brazils's exchanges for the buying of coins 
 	def brazilExchangeBuyCoins(self,money):
 		#testing the time for each api call
