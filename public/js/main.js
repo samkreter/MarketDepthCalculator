@@ -78,6 +78,45 @@ $( function() {
 	}
 
 
+	function RmbVef(data){
+		china = data['China']
+    	venezuela = data['Venezuela']
+    	//add the bitcoin amounts to the appropriote boxes 
+    	$('#BTCChinaRMB-VEF-value').html(china['BTCChina']['coinsExchanged'].toFixed(8));
+    	$('#OKCoinRMB-VEF-value').html(china['OKCoin']['coinsExchanged'].toFixed(8));
+    	$('#SurBitCoinRMB-VEF-value').html(venezuela['SurBitCoin']['moneyExchanged'].toFixed(2));
+    	
+    	$('#'+china['Best']+'RMB-VEF-value').css("border-color","green");
+    	$('#'+venezuela['Best']+'RMB-VEF-value').css("border-color","green");
+    	//added the actual exchnage rate box to the page 
+
+    	$('#RMB-VEF-Result').html(venezuela[venezuela['Best']]['moneyExchanged'].toFixed(2))
+    	// $('.inner-container').prepend('<div id="real-exchange-rate" class="row"><div class="col-md-2 center-bootstrap text-center"><label>Actual Exchange Rate</label><div id="BTCChina-value"class="form-control boldedNumbers" ></div></div></div>')	    
+		
+		//add the percent differnce box to the page 
+		$('#China-Exchange-Group').append('<label>Percent Differece</label><div id="percentDifference-value"class="form-control boldedNumbers shortBox">%'+china['PercentDifference'].toFixed(3)+'</div>')
+
+	}
+
+
+
+	function VefRmb(data){
+		//make working with the data easier to understand 
+		venezuela = data['Venezuela']
+		china = data['China']
+
+		//add the bitcoin amounts to the appropriote boxes 
+    	$('#BTCChinaVEF-RMB-value').html(china['BTCChina']['moneyExchanged'].toFixed(2));
+    	$('#OKCoinVEF-RMB-value').html(china['OKCoin']['moneyExchanged'].toFixed(2));
+    	$('#SurBitCoinVEF-RMB-value').html(venezuela['SurBitCoin']['coinsExchanged'].toFixed(8));
+    	//create the best path green borders 
+    	$('#'+china['Best']+'VEF-RMB-value').css("border-color","green");
+    	$('#'+venezuela['Best']+'VEF-RMB-value').css("border-color","green");
+
+    	$('#VEF-RMB-Result').html(china[china['Best']]['moneyExchanged'].toFixed(2))
+	}
+
+
 	$(document).on("submit", "form", function(event){
 	    event.preventDefault();
 	    $('#loading-modal').modal('show');
@@ -100,6 +139,12 @@ $( function() {
 	        			break;
 	        		case 'BRL-RMB':
 	        			BrlRmb(data);
+	        			break;
+	        		case 'RMB-VEF':
+	        			RmbVef(data);
+	        			break;
+	        		case 'VEF-RMB':
+	        			VefRmb(data);
 	        			break;
 	        	}
 

@@ -187,7 +187,7 @@
 								  </div>
 								  <div class="form-group col-md-3">
 								    <label>SurBitCoin</label>
-								    <div id="FoxBitRMB-VEF-value"class="form-control boldedNumbers"></div>
+								    <div id="SurBitCoinRMB-VEF-value"class="form-control boldedNumbers"></div>
 								  </div>
 								  <div class="form-group col-md-3">
 								    <label>VEF</label>
@@ -208,7 +208,7 @@
 
 								  <div class="form-group col-md-3">
 								    <label>SurBitCoin</label>
-								    <div id="FoxBitVEF-RMB-value"class="form-control boldedNumbers"></div>
+								    <div id="SurBitCoinVEF-RMB-value"class="form-control boldedNumbers"></div>
 								  </div>
 
 								  <div id="China-Exchange-Group" class="form-group col-md-3">

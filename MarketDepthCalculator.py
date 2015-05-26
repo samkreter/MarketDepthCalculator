@@ -60,7 +60,7 @@ class MarketDepthCalculator:
 		print "surBitCoin Execution Time = ",time.time() - surBitCoinStart_time
 
 		totalMarketBuyData = dict()
-		totalMarketBuyData['surBitCoin'] = self.calculate_buy_bitcoins(money,surBitCoin_market_depth['asks'],0)
+		totalMarketBuyData['SurBitCoin'] = self.calculate_buy_bitcoins(money,surBitCoin_market_depth['asks'],0)
 		totalMarketBuyData['Best'] = self.findBest(totalMarketBuyData)
 
 		#totalMarketBuyData['PercentDifference'] = self.percentDifference(totalMarketBuyData)
