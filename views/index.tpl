@@ -38,6 +38,9 @@
 				    <li role="presentation" class="active"><a href="#RMB-CLP" aria-controls="RMB-CLP" role="tab" data-toggle="tab">RMB - CLP</a></li>
 				    <li role="presentation"><a href="#RMB-BRL" aria-controls="RMB-BRL" role="tab" data-toggle="tab">RMB - BRL</a></li>
 				    <li role="presentation"><a href="#RMB-VEF" aria-controls="RMB-VEF" role="tab" data-toggle="tab">RMB - VEF</a></li>
+				    <li role="presentation"><a href="#CLP-VEF" aria-controls="RMB-VEF" role="tab" data-toggle="tab">CLP - VEF</a></li>
+				    <li role="presentation"><a href="#CLP-BRL" aria-controls="RMB-VEF" role="tab" data-toggle="tab">CLP - BRL</a></li>
+				    <li role="presentation"><a href="#BRL-VEF" aria-controls="RMB-VEF" role="tab" data-toggle="tab">BRL - VEF</a></li>
 				  </ul>
 
 
@@ -99,7 +102,7 @@
 								    <div id="CLP-RMB-Result" type="number" class="form-control boldedNumbers" ></div>
 								  </div>
 								  
-								  
+
 								</div>
 								<input id="currency-input-hidden" type="hidden" name="currency" value="CLP-RMB">
 						</form>
@@ -231,7 +234,196 @@
 
 				</div>
 
+			<!-- ########################################################## -->
+
+
+				    <!-- CLP VEF -->
+				    <div role="tabpanel" class="tab-pane" id="CLP-VEF">
+				    	<form role="form">
+							  <div class="row">
+								  <div class="form-group col-md-3">
+								    <label>CLP</label>
+								    <input type="number" name="amount-CLP-VEF" class="form-control">
+								    <button class="btn btn-default btn-margin-fix">CLP Exchange</button>
+								  </div>
+								  <div id="China-Exchange-Group" class="form-group col-md-3">
+								    <label>ChileBit</label>
+								    <div id="ChileBitCLP-VEF-value"class="form-control boldedNumbers has-success" ></div>
+									<label>SurBit</label>
+								    <div id="SurBitCLP-VEF-value"class="form-control boldedNumbers" ></div>
+								  </div>
+								  <div class="form-group col-md-3">
+								    <label>SurBitCoin</label>
+								    <div id="SurBitCoinCLP-VEF-value"class="form-control boldedNumbers"></div>
+								  </div>
+								  <div class="form-group col-md-3">
+								    <label>VEF</label>
+								    <div id="CLP-VEF-Result" type="number" class="form-control boldedNumbers" ></div>
+								  </div>
+								</div>
+								<input id="currency-input-hidden" type="hidden" name="currency" value="CLP-VEF">
+						</form>
+
+
+						<form role="form">
+							  <div class="row">
+								  <div class="form-group col-md-3">
+								    <label>VEF</label>
+								    <input type="number" name="amount-VEF-CLP" class="form-control" class="btn btn-default btn-margin-fix">
+								    <button class="btn btn-default btn-margin-fix">VEF Exchange</button>
+								  </div>
+
+								  <div class="form-group col-md-3">
+								    <label>SurBitCoin</label>
+								    <div id="SurBitCoinVEF-CLP-value"class="form-control boldedNumbers"></div>
+								  </div>
+
+								  <div id="China-Exchange-Group" class="form-group col-md-3">
+								    <label>ChileBit</label>
+								    <div id="ChileBitVEF-CLP-value"class="form-control boldedNumbers has-success" ></div>
+									<label>SurBit</label>
+								    <div id="SurBitVEF-CLP-value"class="form-control boldedNumbers" ></div>
+								  </div>
+
+								  <div class="form-group col-md-3">
+								    <label>CLP</label>
+								    <div id="VEF-CLP-Result" type="number" class="form-control boldedNumbers"></div>
+								  </div>
+								  
+								  
+								</div>
+								<input id="currency-input-hidden" type="hidden" name="currency" value="VEF-CLP">
+						</form>
+					</div>
+
 				</div>
+
+			<!-- ########################################################## -->
+
+
+				    <!-- CLP to BRL -->
+				    <div role="tabpanel" class="tab-pane" id="RMB-VEF">
+				    	<form role="form">
+							  <div class="row">
+								  <div class="form-group col-md-3">
+								    <label>CLP</label>
+								    <input type="number" name="amount-CLP-BRL" class="form-control">
+								    <button class="btn btn-default btn-margin-fix">CLP Exchange</button>
+								  </div>
+								  <div id="China-Exchange-Group" class="form-group col-md-3">
+								    <label>ChileBit</label>
+								    <div id="ChileBitCLP-BRL-value"class="form-control boldedNumbers has-success" ></div>
+									<label>SurBit</label>
+								    <div id="SurBitCLP-BRL-value"class="form-control boldedNumbers" ></div>
+								  </div>
+								  <div class="form-group col-md-3">
+								    <label>FoxBit</label>
+								    <div id="FoxBitCLP-BRL-value"class="form-control boldedNumbers"></div>
+								  </div>
+								  <div class="form-group col-md-3">
+								    <label>BRL</label>
+								    <div id="CLP-BRL-Result" type="number" class="form-control boldedNumbers" ></div>
+								  </div>
+								</div>
+								<input id="currency-input-hidden" type="hidden" name="currency" value="CLP-BRL">
+						</form>
+
+
+						<form role="form">
+							  <div class="row">
+								  <div class="form-group col-md-3">
+								    <label>BRL</label>
+								    <input type="number" name="amount-BRL-CLP" class="form-control" class="btn btn-default btn-margin-fix">
+								    <button class="btn btn-default btn-margin-fix">BRL Exchange</button>
+								  </div>
+
+								  <div class="form-group col-md-3">
+								    <label>FoxBit</label>
+								    <div id="FoxBitBRL-CLP-value"class="form-control boldedNumbers"></div>
+								  </div>
+
+								  <div class="form-group col-md-3">
+								    <label>ChileBit</label>
+								    <div id="ChileBitBRL-CLP-value"class="form-control boldedNumbers has-success" ></div>
+									<label>SurBit</label>
+								    <div id="SurBitBRL-CLP-value"class="form-control boldedNumbers" ></div>
+								  </div>
+
+								  <div class="form-group col-md-3">
+								    <label>CLP</label>
+								    <div id="BRL-CLP-Result" type="number" class="form-control boldedNumbers"></div>
+								  </div>
+								  
+								  
+								</div>
+								<input id="currency-input-hidden" type="hidden" name="currency" value="BRL-CLP">
+						</form>
+					</div>
+
+				</div>
+
+
+							<!-- ########################################################## -->
+
+
+				    <!-- BRL to VEF -->
+				    <div role="tabpanel" class="tab-pane" id="BRL-VEF">
+				    	<form role="form">
+							  <div class="row">
+								  <div class="form-group col-md-3">
+								    <label>BRL</label>
+								    <input type="number" name="amount-BRL-VEF" class="form-control">
+								    <button class="btn btn-default btn-margin-fix">BRL Exchange</button>
+								  </div>
+								  <div class="form-group col-md-3">
+								    <label>FoxBit</label>
+								    <div id="FoxBitBRL-VEF-value"class="form-control boldedNumbers has-success" ></div>
+								  </div>
+								  <div class="form-group col-md-3">
+								    <label>SurBitCoin</label>
+								    <div id="SurBitCoinBRL-VEF-value"class="form-control boldedNumbers"></div>
+								  </div>
+								  <div class="form-group col-md-3">
+								    <label>VEF</label>
+								    <div id="BRL-VEF-Result" type="number" class="form-control boldedNumbers" ></div>
+								  </div>
+								</div>
+								<input id="currency-input-hidden" type="hidden" name="currency" value="BRL-VEF">
+						</form>
+
+
+						<form role="form">
+							  <div class="row">
+								  <div class="form-group col-md-3">
+								    <label>VEF</label>
+								    <input type="number" name="amount-VEF-BRL" class="form-control" class="btn btn-default btn-margin-fix">
+								    <button class="btn btn-default btn-margin-fix">VEF Exchange</button>
+								  </div>
+
+								  <div class="form-group col-md-3">
+								    <label>SurBitCoin</label>
+								    <div id="SurBitCoinVEF-BRL-value"class="form-control boldedNumbers"></div>
+								  </div>
+
+								  <div class="form-group col-md-3">
+								    <label>FoxBit</label>
+								    <div id="BTCChinaVEF-BRL-value"class="form-control boldedNumbers has-success" ></div>
+								  </div>
+
+								  <div class="form-group col-md-3">
+								    <label>BRL</label>
+								    <div id="VEF-BRL-Result" type="number" class="form-control boldedNumbers"></div>
+								  </div>
+								  
+								  
+								</div>
+								<input id="currency-input-hidden" type="hidden" name="currency" value="VEF-BRL">
+						</form>
+					</div>
+
+				</div>
+
+				</div> <!-- last tabs div -->
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
