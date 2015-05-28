@@ -402,7 +402,7 @@
 
 								  <div class="form-group col-md-3">
 								    <label>FoxBit</label>
-								    <div id="BTCChinaVEF-BRL-value"class="form-control boldedNumbers has-success" ></div>
+								    <div id="FoxBitVEF-BRL-value"class="form-control boldedNumbers has-success" ></div>
 								  </div>
 
 								  <div class="form-group col-md-3">

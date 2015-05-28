@@ -88,7 +88,7 @@ def amount_form_ajax():
 	elif currency == 'BRL-CLP':
 		print 'BRL-CLP'
 		tmd['currency'] = 'BRL-CLP'
-		tmd['Brazil'] = calc.venezuelaExchangeBuyCoins(amount)
+		tmd['Brazil'] = calc.brazilExchangeBuyCoins(amount)
 		tmd['Chile'] = calc.chileExchangeSellCoins(tmd['Brazil'][tmd['Brazil']['Best']]['coinsExchanged'])
 	#BRL-VEF tab
 	elif currency == 'BRL-VEF':
