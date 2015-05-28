@@ -40,6 +40,9 @@ class MarketDepthCalculator:
 				best = key
 		return best 
 	
+
+
+	
 	#controling venezuela's exchanges in the selling of coins 
 	def venezuelaExchangeSellCoins(self,coins):
 

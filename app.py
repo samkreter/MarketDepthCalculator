@@ -69,7 +69,27 @@ def amount_form_ajax():
 		tmd['currency'] = 'VEF-RMB'
 		tmd['Venezuela'] = calc.venezuelaExchangeBuyCoins(amount)
 		tmd['China'] = calc.chinaExchangeSellCoins(tmd['Venezuela'][tmd['Venezuela']['Best']]['coinsExchanged'])
-
+	#CLP-VEF tab
+	elif currency == 'CLP-VEF':
+		print "CLP-VEF ajax"
+		tmd['currency'] = 'CLP-VEF'
+		tmd['Chile'] = calc.chileExchangeBuyCoins(amount)
+		tmd['Venezuela'] = calc.venezuelaExchangeSellCoins(tmd['Chile'][tmd['Chile']['Best']]['coinsExchanged'])
+	elif currency == 'VEF-CLP':
+		tmd['currency'] = 'VEF-CLP'
+		tmd['Venezuela'] = calc.venezuelaExchangeBuyCoins(amount)
+		tmd['Chile'] = calc.chileExchangeSellCoins(tmd['Venezuela'][tmd['Venezuela']['Best']]['coinsExchanged'])
+	#CLP-BRL tab
+	elif currency == 'CLP-BRL':
+		print 'CLP-BRL ajax'
+		tmd['currency'] = 'CLP-BRL'
+		tmd['Chile'] = calc.chileExchangeBuyCoins(amount)
+		tmd['Brazil'] = calc.venezuelaExchangeSellCoins(tmd['Chile'][tmd['Chile']['Best']]['coinsExchanged'])
+	elif currency == 'BRL-CLP':
+		print 'BRL-CLP'
+		tmd['currency'] = 'BRL-CLP'
+		tmd['Venezuela'] = calc.venezuelaExchangeBuyCoins(amount)
+		tmd['Brazil'] = calc.chileExchangeSellCoins(tmd['Venezuela'][tmd['Venezuela']['Best']]['coinsExchanged'])
 	return tmd
 	
 
