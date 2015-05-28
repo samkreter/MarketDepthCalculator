@@ -38,9 +38,9 @@
 				    <li role="presentation" class="active"><a href="#RMB-CLP" aria-controls="RMB-CLP" role="tab" data-toggle="tab">RMB - CLP</a></li>
 				    <li role="presentation"><a href="#RMB-BRL" aria-controls="RMB-BRL" role="tab" data-toggle="tab">RMB - BRL</a></li>
 				    <li role="presentation"><a href="#RMB-VEF" aria-controls="RMB-VEF" role="tab" data-toggle="tab">RMB - VEF</a></li>
-				    <li role="presentation"><a href="#CLP-VEF" aria-controls="RMB-VEF" role="tab" data-toggle="tab">CLP - VEF</a></li>
-				    <li role="presentation"><a href="#CLP-BRL" aria-controls="RMB-VEF" role="tab" data-toggle="tab">CLP - BRL</a></li>
-				    <li role="presentation"><a href="#BRL-VEF" aria-controls="RMB-VEF" role="tab" data-toggle="tab">BRL - VEF</a></li>
+				    <li role="presentation"><a href="#CLP-VEF" aria-controls="CLP-VEF" role="tab" data-toggle="tab">CLP - VEF</a></li>
+				    <li role="presentation"><a href="#CLP-BRL" aria-controls="CLP-BRL" role="tab" data-toggle="tab">CLP - BRL</a></li>
+				    <li role="presentation"><a href="#BRL-VEF" aria-controls="BRL-VEF" role="tab" data-toggle="tab">BRL - VEF</a></li>
 				  </ul>
 
 
@@ -232,8 +232,6 @@
 						</form>
 					</div>
 
-				</div>
-
 			<!-- ########################################################## -->
 
 
@@ -296,13 +294,11 @@
 						</form>
 					</div>
 
-				</div>
-
 			<!-- ########################################################## -->
 
 
 				    <!-- CLP to BRL -->
-				    <div role="tabpanel" class="tab-pane" id="RMB-VEF">
+				    <div role="tabpanel" class="tab-pane" id="CLP-BRL">
 				    	<form role="form">
 							  <div class="row">
 								  <div class="form-group col-md-3">
@@ -360,7 +356,6 @@
 						</form>
 					</div>
 
-				</div>
 
 
 							<!-- ########################################################## -->
@@ -421,9 +416,8 @@
 						</form>
 					</div>
 
-				</div>
 
-				</div> <!-- last tabs div -->
+			</div> <!-- last tabs div -->
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

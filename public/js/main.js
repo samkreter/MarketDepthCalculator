@@ -117,9 +117,10 @@ $( function() {
 	function ClpBrl(data){
 		brazil = data['Brazil']
 		chile = data['Chile']
+		console.log(brazil)
 		//add the bitcoin amounts to the appropriote boxes 
-    	$('#FoxBitCLP-BRL-value').html(brazil['FoxBit']['coinsExchanged'].toFixed(8));
-    	$('#ChileBitCLP-BRL-value').html(chile['ChileBit']['moneyExchanged'].toFixed(2));
+    	$('#FoxBitCLP-BRL-value').html(brazil['FoxBit']['moneyExchanged'].toFixed(8));
+    	$('#ChileBitCLP-BRL-value').html(chile['ChileBit']['coinsExchanged'].toFixed(2));
     	
     	$('#'+brazil['Best']+'CLP-BRL-value').css("border-color","green");
     	$('#'+chile['Best']+'CLP-BRL-value').css("border-color","green");
@@ -134,7 +135,7 @@ $( function() {
 		chile = data['Chile']
     	//add the bitcoin amounts to the appropriote boxes 
     	$('#FoxBitBRL-CLP-value').html(brazil['FoxBit']['coinsExchanged'].toFixed(8));
-    	$('#ChileBitBRL-CLP-value').html(chile['ChileBit']['coinsExchanged'].toFixed(8));
+    	$('#ChileBitBRL-CLP-value').html(chile['ChileBit']['moneyExchanged'].toFixed(8));
     	//create the best path green borders 
     	$('#'+brazil['Best']+'BRL-CLP-value').css("border-color","green");
     	$('#'+chile['Best']+'BRL-CLP-value').css("border-color","green");
@@ -146,8 +147,8 @@ $( function() {
 		venezuela = data['Venezuela']
 		chile = data['Chile']
 		//add the bitcoin amounts to the appropriote boxes 
-    	$('#SurBitCoinCLP-VEF-value').html(venezuela['SurBitCoin']['coinsExchanged'].toFixed(8));
-    	$('#ChileBitCLP-VEF-value').html(chile['ChileBit']['moneyExchanged'].toFixed(2));
+    	$('#SurBitCoinCLP-VEF-value').html(venezuela['SurBitCoin']['moneyExchanged'].toFixed(8));
+    	$('#ChileBitCLP-VEF-value').html(chile['ChileBit']['coinsExchanged'].toFixed(2));
     	
     	$('#'+venezuela['Best']+'CLP-VEF-value').css("border-color","green");
     	$('#'+chile['Best']+'CLP-VEF-value').css("border-color","green");
@@ -161,7 +162,7 @@ $( function() {
 		chile = data['Chile']
     	//add the bitcoin amounts to the appropriote boxes 
     	$('#SurBitCoinVEF-CLP-value').html(venezuela['SurBitCoin']['coinsExchanged'].toFixed(8));
-    	$('#ChileBitVEF-CLP-value').html(chile['ChileBit']['coinsExchanged'].toFixed(8));
+    	$('#ChileBitVEF-CLP-value').html(chile['ChileBit']['moneyExchanged'].toFixed(8));
     	//create the best path green borders 
     	$('#'+venezuela['Best']+'VEF-CLP-value').css("border-color","green");
     	$('#'+chile['Best']+'VEF-CLP-value').css("border-color","green");
@@ -173,8 +174,8 @@ $( function() {
 		venezuela = data['Venezuela']
 		brazil = data['Brazil']
 		//add the bitcoin amounts to the appropriote boxes 
-    	$('#SurBitCoinBRL-VEF-value').html(venezuela['SurBitCoin']['coinsExchanged'].toFixed(8));
-    	$('#FoxBitBRL-VEF-value').html(brazil['FoxBit']['moneyExchanged'].toFixed(2));
+    	$('#SurBitCoinBRL-VEF-value').html(venezuela['SurBitCoin']['moneyExchanged'].toFixed(8));
+    	$('#FoxBitBRL-VEF-value').html(brazil['FoxBit']['coinsExchanged'].toFixed(2));
     	
     	$('#'+venezuela['Best']+'BRL-VEF-value').css("border-color","green");
     	$('#'+brazil['Best']+'BRL-VEF-value').css("border-color","green");
@@ -188,7 +189,7 @@ $( function() {
 		brazil = data['Brazil']
 		//add the bitcoin amounts to the appropriote boxes 
     	$('#SurBitCoinVEF-BRL-value').html(venezuela['SurBitCoin']['coinsExchanged'].toFixed(8));
-    	$('#FoxBitVEF-BRL-value').html(brazil['FoxBit']['coinsExchanged'].toFixed(8));
+    	$('#FoxBitVEF-BRL-value').html(brazil['FoxBit']['moneyExchanged'].toFixed(8));
     	//create the best path green borders 
     	$('#'+venezuela['Best']+'VEF-BRL-value').css("border-color","green");
     	$('#'+brazil['Best']+'VEF-BRL-value').css("border-color","green");
