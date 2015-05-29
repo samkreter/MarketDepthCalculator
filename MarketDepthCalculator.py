@@ -46,24 +46,33 @@ class MarketDepthCalculator:
 	
 
 
-	def exchangeRates(self):
+	def exchangeRate(self,baseCurrency,exchangeCurrency):
+		data = self.exchangeRateDataSetup() 
+		return 1/data['rates'][baseCurrency]*data['rates'][exchangeCurrency]
+
+
+
+	def exchangeRateDataSetup(self):
 		f = open("openExchangeRateData.txt")
 		lastCallInfo = json.loads(f.read())
 		f.close()
-		print float(lastCallInfo['timestamp'])
+
+
    		if time.time() - float(lastCallInfo['timestamp']) > 3600:
-			print "making new call"
+			print "making new api Exhcnage Data call"
 			openExchangeRateData = json.loads(urllib2.urlopen(self.open_exchange_rates_url).read())
+			openExchangeRateData['timestamp'] = time.time()
 			with open("openExchangeRateData.txt",'w') as f:
 				f.seek(0)
 				json.dump(openExchangeRateData,f)
 				f.truncate()
 				f.close()
    		else:
-   			print "using old stuff"
+   			print "using stored openExchange data"
    			openExchangeRateData = lastCallInfo
 
-   		print lastCallInfo['timestamp']
+   		return openExchangeRateData
+
 
 	#controling venezuela's exchanges in the selling of coins 
 	def venezuelaExchangeSellCoins(self,coins):

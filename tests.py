@@ -2,4 +2,5 @@ from MarketDepthCalculator import MarketDepthCalculator
 
 c = MarketDepthCalculator()
 
-c.exchangeRates()
+print c.exchangeRate("VEF","BRL")
+print c.exchangeRate("BRL","VEF")
