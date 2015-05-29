@@ -47,6 +47,10 @@ class MarketDepthCalculator:
 
 
 	def exchangeRate(self,baseCurrency,exchangeCurrency):
+		if baseCurrency == 'RMB':
+			baseCurrency = 'CNY' 
+		if exchangeCurrency == 'RMB':
+			exchangeCurrency = 'CNY' 
 		data = self.exchangeRateDataSetup() 
 		return 1/data['rates'][baseCurrency]*data['rates'][exchangeCurrency]
 

@@ -209,6 +209,7 @@ $( function() {
 	        processData: false,
 	        contentType: false,
 	        success: function (data, status){
+	        	console.log(data['exhangeRate'])
 	        	switch(data['currency']){
 	        		case 'RMB-CLP':
 	        			RmbClp(data);

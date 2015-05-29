@@ -2,5 +2,7 @@ from MarketDepthCalculator import MarketDepthCalculator
 
 c = MarketDepthCalculator()
 
-print c.exchangeRate("VEF","BRL")
-print c.exchangeRate("BRL","VEF")
+currency = 'BRL-VEF'
+print currency[0:3]
+print currency[4:7]
+print c.exchangeRate(currency[0:2],currency[4:6])
