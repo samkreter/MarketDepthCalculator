@@ -2,6 +2,8 @@ import urllib2 #making the api calls
 import json #parseing the api calls to json
 import time #testing the timing of the api calls
 
+import Variables
+
 class MarketDepthCalculator:
 	
 	#setting the url for the exhanges api
@@ -16,6 +18,8 @@ class MarketDepthCalculator:
 		#Venezuela's exhcnages
 		self.surBitCoin_market_depth_url = "https://api.blinktrade.com/api/v1/VEF/orderbook?crypto_currency=BTC"
 		
+
+		self.open_exchange_rates_url = Variables.open_exchange_rates_url
 		self.price = 0
 		self.quan = 1
 
@@ -42,7 +46,25 @@ class MarketDepthCalculator:
 	
 
 
-	
+	def exchangeRates(self):
+		f = open("openExchangeRateData.txt")
+		lastCallInfo = json.loads(f.read())
+		f.close()
+		print float(lastCallInfo['timestamp'])
+   		if time.time() - float(lastCallInfo['timestamp']) > 3600:
+			print "making new call"
+			openExchangeRateData = json.loads(urllib2.urlopen(self.open_exchange_rates_url).read())
+			with open("openExchangeRateData.txt",'w') as f:
+				f.seek(0)
+				json.dump(openExchangeRateData,f)
+				f.truncate()
+				f.close()
+   		else:
+   			print "using old stuff"
+   			openExchangeRateData = lastCallInfo
+
+   		print lastCallInfo['timestamp']
+
 	#controling venezuela's exchanges in the selling of coins 
 	def venezuelaExchangeSellCoins(self,coins):
 

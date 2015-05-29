@@ -1,0 +1,1 @@
+open_exchange_rates_url = 'http://openexchangerates.org/api/latest.json?app_id=207715e3557648f58409420c2ba896cc'
