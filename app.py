@@ -18,6 +18,11 @@ def bootstrapCSS(filename):
 def bootstrapJS(filename):
 	return static_file(filename,root='bootstrap/js')
 
+@route('/font-awesome/css/<filename>')
+def fontawesomeCSS(fiename):
+	return static_file(filename,root='font-awesome-4.3.0')
+
+
 #public routes
 @route('/<filename:re:.*\.js>')
 def javascripts(filename):
