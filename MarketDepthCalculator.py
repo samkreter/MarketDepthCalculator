@@ -23,10 +23,6 @@ class MarketDepthCalculator:
 		self.price = 0
 		self.quan = 1
 
-	#test fundtion, delete before production
-	def pwd(self,sells):
-		for x in range(199,189):
-			print sells[x]
 
 	def percentDifference(self,buyData):
 		difference = abs(buyData['OKCoin']['coinsExchanged'] - buyData['BTCChina']['coinsExchanged'])
@@ -175,7 +171,6 @@ class MarketDepthCalculator:
 		totalMarketBuyData['OKCoin'] = self.calculate_sell_bitcoins(coins,okcoin_market_depth['bids'])
 		totalMarketBuyData['BTCChina'] = self.calculate_sell_bitcoins(coins,btcchina_market_depth['bids'])
 		totalMarketBuyData['Best'] = self.findBest(totalMarketBuyData)
-		print totalMarketBuyData['Best']
 		return totalMarketBuyData
 
 	#use both chinas exchanges to set up the dict, main funtion to be called outside the class
