@@ -25,8 +25,8 @@ class MarketDepthCalculator:
 
 
 	def percentDifference(self,num1,num2):
-		difference = abs(num1 - num2)
-		average = (num1 + num2) / 2
+		difference = num2 - num1
+		average = (num2 + num1) / 2
 		print "difference is: ",difference
 		print "average is : ",average
 		return (difference / average) * 100

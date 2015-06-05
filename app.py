@@ -49,7 +49,7 @@ def amount_form_ajax():
 	tmd = dict()
 	if currency == 'CLP-RMB':
 		print "CLP-RMB ajax"
-		tmd['currency'] = 'CLP-RMB'
+		tmd['currency'] = currency
 		tmd['exhangeRate'] = calc.exchangeRate(currency[0:3],currency[4:7])
 		tmd['Chile'] = calc.chileExchangeBuyCoins(amount)
 		tmd['China'] = calc.chinaExchangeSellCoins(tmd['Chile'][tmd['Chile']['Best']]['coinsExchanged'])
@@ -57,7 +57,7 @@ def amount_form_ajax():
 		tmd['percentDifference'] = calc.percentDifference(tmd['exhangeRate'],tmd['bitnexoExchangeRate'])
 	elif currency == 'RMB-CLP':
 		print "RMB-CLP ajax"
-		tmd['currency'] = 'RMB-CLP'
+		tmd['currency'] = currency
 		tmd['exhangeRate'] = calc.exchangeRate(currency[0:3],currency[4:7])
 		tmd['China'] = calc.chinaExchangeBuyCoins(float(amount))
 		tmd['Chile'] = calc.chileExchangeSellCoins(tmd['China'][tmd['China']['Best']]['coinsExchanged'])
@@ -66,7 +66,7 @@ def amount_form_ajax():
 	#RMB-BRL tab 
 	elif currency == 'RMB-BRL':
 		print "RMB-BRL ajax"
-		tmd['currency'] = 'RMB-BRL'
+		tmd['currency'] = currency
 		tmd['exhangeRate'] = calc.exchangeRate(currency[0:3],currency[4:7])
 		tmd['China'] = calc.chinaExchangeBuyCoins(float(amount))
 		tmd['Brazil'] = calc.brazilExchangeSellCoins(tmd['China'][tmd['China']['Best']]['coinsExchanged'])
@@ -74,7 +74,7 @@ def amount_form_ajax():
 		tmd['percentDifference'] = calc.percentDifference(tmd['exhangeRate'],tmd['bitnexoExchangeRate'])
 	elif currency == 'BRL-RMB':
 		print "BRL-RMB ajax"
-		tmd['currency'] = 'BRL-RMB'
+		tmd['currency'] = currency
 		tmd['exhangeRate'] = calc.exchangeRate(currency[0:3],currency[4:7])
 		tmd['Brazil'] = calc.brazilExchangeBuyCoins(amount)
 		tmd['China'] = calc.chinaExchangeSellCoins(tmd['Brazil'][tmd['Brazil']['Best']]['coinsExchanged'])
@@ -83,7 +83,7 @@ def amount_form_ajax():
 	#RMB-VEF tab
 	elif currency == 'RMB-VEF':
 		print "RMB-VEF ajax"
-		tmd['currency'] = 'RMB-VEF'
+		tmd['currency'] = currency
 		tmd['exhangeRate'] = calc.exchangeRate(currency[0:3],currency[4:7])
 		tmd['China'] = calc.chinaExchangeBuyCoins(float(amount))
 		tmd['Venezuela'] = calc.venezuelaExchangeSellCoins(tmd['China'][tmd['China']['Best']]['coinsExchanged'])
@@ -91,7 +91,7 @@ def amount_form_ajax():
 		tmd['percentDifference'] = calc.percentDifference(tmd['exhangeRate'],tmd['bitnexoExchangeRate'])
 	elif currency == 'VEF-RMB':
 		print "VEF-RMB ajax"
-		tmd['currency'] = 'VEF-RMB'
+		tmd['currency'] = currency
 		tmd['exhangeRate'] = calc.exchangeRate(currency[0:3],currency[4:7])
 		tmd['Venezuela'] = calc.venezuelaExchangeBuyCoins(amount)
 		tmd['China'] = calc.chinaExchangeSellCoins(tmd['Venezuela'][tmd['Venezuela']['Best']]['coinsExchanged'])
@@ -100,14 +100,14 @@ def amount_form_ajax():
 	#CLP-VEF tab
 	elif currency == 'CLP-VEF':
 		print "CLP-VEF ajax"
-		tmd['currency'] = 'CLP-VEF'
+		tmd['currency'] = currency
 		tmd['exhangeRate'] = calc.exchangeRate(currency[0:3],currency[4:7])
 		tmd['Chile'] = calc.chileExchangeBuyCoins(amount)
 		tmd['Venezuela'] = calc.venezuelaExchangeSellCoins(tmd['Chile'][tmd['Chile']['Best']]['coinsExchanged'])
 		tmd['bitnexoExchangeRate'] = calc.bitnexoExchangeRate(tmd['Chile'],tmd['Venezuela'])
 		tmd['percentDifference'] = calc.percentDifference(tmd['exhangeRate'],tmd['bitnexoExchangeRate'])
 	elif currency == 'VEF-CLP':
-		tmd['currency'] = 'VEF-CLP'
+		tmd['currency'] = currency
 		tmd['exhangeRate'] = calc.exchangeRate(currency[0:3],currency[4:7])
 		tmd['Venezuela'] = calc.venezuelaExchangeBuyCoins(amount)
 		tmd['Chile'] = calc.chileExchangeSellCoins(tmd['Venezuela'][tmd['Venezuela']['Best']]['coinsExchanged'])
@@ -116,7 +116,7 @@ def amount_form_ajax():
 	#CLP-BRL tab
 	elif currency == 'CLP-BRL':
 		print 'CLP-BRL ajax'
-		tmd['currency'] = 'CLP-BRL'
+		tmd['currency'] = currency
 		tmd['exhangeRate'] = calc.exchangeRate(currency[0:3],currency[4:7])
 		tmd['Chile'] = calc.chileExchangeBuyCoins(amount)
 		tmd['Brazil'] = calc.brazilExchangeSellCoins(tmd['Chile'][tmd['Chile']['Best']]['coinsExchanged'])
@@ -124,7 +124,7 @@ def amount_form_ajax():
 		tmd['percentDifference'] = calc.percentDifference(tmd['exhangeRate'],tmd['bitnexoExchangeRate'])
 	elif currency == 'BRL-CLP':
 		print 'BRL-CLP'
-		tmd['currency'] = 'BRL-CLP'
+		tmd['currency'] = currency
 		tmd['exhangeRate'] = calc.exchangeRate(currency[0:3],currency[4:7])
 		tmd['Brazil'] = calc.brazilExchangeBuyCoins(amount)
 		tmd['Chile'] = calc.chileExchangeSellCoins(tmd['Brazil'][tmd['Brazil']['Best']]['coinsExchanged'])
@@ -133,7 +133,7 @@ def amount_form_ajax():
 	#BRL-VEF tab
 	elif currency == 'BRL-VEF':
 		print "BRL-VEF ajax"
-		tmd['currency'] = 'BRL-VEF'
+		tmd['currency'] = currency
 		tmd['exhangeRate'] = calc.exchangeRate(currency[0:3],currency[4:7])
 		tmd['Brazil'] = calc.brazilExchangeBuyCoins(amount)
 		tmd['Venezuela'] = calc.venezuelaExchangeSellCoins(tmd['Brazil'][tmd['Brazil']['Best']]['coinsExchanged'])
@@ -141,7 +141,7 @@ def amount_form_ajax():
 		tmd['percentDifference'] = calc.percentDifference(tmd['exhangeRate'],tmd['bitnexoExchangeRate'])
 	elif currency == 'VEF-BRL':
 		print "VEF-BRL"
-		tmd['currency'] = 'VEF-BRL'
+		tmd['currency'] = currency
 		tmd['exhangeRate'] = calc.exchangeRate(currency[0:3],currency[4:7])
 		tmd['Venezuela'] = calc.venezuelaExchangeBuyCoins(amount)
 		tmd['Brazil'] = calc.brazilExchangeSellCoins(tmd['Venezuela'][tmd['Venezuela']['Best']]['coinsExchanged'])
