@@ -12,8 +12,8 @@ $( function() {
 	}
 
 	function RmbClp(data){
-		china = data['China']
-    	chile = data['Chile']
+		china = data['RMB']
+    	chile = data['CLP']
     	//add the bitcoin amounts to the appropriote boxes 
     	$('#BTCChinaRMB-CLP-value').html(china['BTCChina']['coinsExchanged'].toFixed(8));
     	$('#OKCoinRMB-CLP-value').html(china['OKCoin']['coinsExchanged'].toFixed(8));
@@ -35,8 +35,8 @@ $( function() {
 	}
 
 	function ClpRmb(data){
-		china = data['China']
-    	chile = data['Chile']
+		china = data['RMB']
+    	chile = data['CLP']
 
     	//add the bitcoin amounts to the appropriote boxes 
     	$('#BTCChinaCLP-RMB-value').html(china['BTCChina']['moneyExchanged'].toFixed(2));
@@ -55,8 +55,8 @@ $( function() {
 	}
 
 	function RmbBrl(data){
-		china = data['China']
-    	brazil = data['Brazil']
+		china = data['RMB']
+    	brazil = data['CLP']
     	//add the bitcoin amounts to the appropriote boxes 
     	$('#BTCChinaRMB-BRL-value').html(china['BTCChina']['coinsExchanged'].toFixed(8));
     	$('#OKCoinRMB-BRL-value').html(china['OKCoin']['coinsExchanged'].toFixed(8));
@@ -79,8 +79,8 @@ $( function() {
 
 	function BrlRmb(data){
 		//make working with the data easier to understand 
-		brazil = data['Brazil']
-		china = data['China']
+		brazil = data['BRL']
+		china = data['RMB']
 
 		//add the bitcoin amounts to the appropriote boxes 
     	$('#BTCChinaBRL-RMB-value').html(china['BTCChina']['moneyExchanged'].toFixed(2));
@@ -101,8 +101,8 @@ $( function() {
 
 
 	function RmbVef(data){
-		china = data['China']
-    	venezuela = data['Venezuela']
+		china = data['RMB']
+    	venezuela = data['VEF']
     	//add the bitcoin amounts to the appropriote boxes 
     	$('#BTCChinaRMB-VEF-value').html(china['BTCChina']['coinsExchanged'].toFixed(8));
     	$('#OKCoinRMB-VEF-value').html(china['OKCoin']['coinsExchanged'].toFixed(8));
@@ -125,8 +125,8 @@ $( function() {
 
 	function VefRmb(data){
 		//make working with the data easier to understand 
-		venezuela = data['Venezuela']
-		china = data['China']
+		venezuela = data['VEF']
+		china = data['RMB']
 
 		//add the bitcoin amounts to the appropriote boxes 
     	$('#BTCChinaVEF-RMB-value').html(china['BTCChina']['moneyExchanged'].toFixed(2));
@@ -146,8 +146,8 @@ $( function() {
 	}
 
 	function ClpBrl(data){
-		brazil = data['Brazil']
-		chile = data['Chile']
+		brazil = data['BRL']
+		chile = data['CLP']
 		console.log(brazil)
 		//add the bitcoin amounts to the appropriote boxes 
     	$('#FoxBitCLP-BRL-value').html(brazil['FoxBit']['moneyExchanged'].toFixed(2));
@@ -167,8 +167,8 @@ $( function() {
 	}
 
 	function BrlClp(data){
-		brazil = data['Brazil']
-		chile = data['Chile']
+		brazil = data['BRL']
+		chile = data['CLP']
     	//add the bitcoin amounts to the appropriote boxes 
     	$('#FoxBitBRL-CLP-value').html(brazil['FoxBit']['coinsExchanged'].toFixed(8));
     	$('#ChileBitBRL-CLP-value').html(chile['ChileBit']['moneyExchanged'].toFixed(2));
@@ -186,8 +186,8 @@ $( function() {
 	}
 
 	function ClpVef(data){
-		venezuela = data['Venezuela']
-		chile = data['Chile']
+		venezuela = data['VEF']
+		chile = data['CLP']
 		//add the bitcoin amounts to the appropriote boxes 
     	$('#SurBitCoinCLP-VEF-value').html(venezuela['SurBitCoin']['moneyExchanged'].toFixed(2));
     	$('#ChileBitCLP-VEF-value').html(chile['ChileBit']['coinsExchanged'].toFixed(8));
@@ -206,8 +206,8 @@ $( function() {
 	}
 
 	function  VefClp(data){
-		venezuela = data['Venezuela']
-		chile = data['Chile']
+		venezuela = data['VEF']
+		chile = data['CLP']
     	//add the bitcoin amounts to the appropriote boxes 
     	$('#SurBitCoinVEF-CLP-value').html(venezuela['SurBitCoin']['coinsExchanged'].toFixed(8));
     	$('#ChileBitVEF-CLP-value').html(chile['ChileBit']['moneyExchanged'].toFixed(2));
@@ -225,8 +225,8 @@ $( function() {
 	}
 
 	function BrlVef(data){
-		venezuela = data['Venezuela']
-		brazil = data['Brazil']
+		venezuela = data['VEF']
+		brazil = data['BRL']
 		//add the bitcoin amounts to the appropriote boxes 
     	$('#SurBitCoinBRL-VEF-value').html(venezuela['SurBitCoin']['moneyExchanged'].toFixed(2));
     	$('#FoxBitBRL-VEF-value').html(brazil['FoxBit']['coinsExchanged'].toFixed(8));
@@ -245,8 +245,8 @@ $( function() {
 	}
 
 	function VefBrl(data){
-		venezuela = data['Venezuela']
-		brazil = data['Brazil']
+		venezuela = data['VFF']
+		brazil = data['BRL']
 		//add the bitcoin amounts to the appropriote boxes 
     	$('#SurBitCoinVEF-BRL-value').html(venezuela['SurBitCoin']['coinsExchanged'].toFixed(8));
     	$('#FoxBitVEF-BRL-value').html(brazil['FoxBit']['moneyExchanged'].toFixed(2));
