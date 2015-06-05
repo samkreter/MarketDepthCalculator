@@ -136,7 +136,7 @@ def amount_form_ajax():
 		tmd['currency'] = currency
 		tmd['exhangeRate'] = calc.exchangeRate(currency[0:3],currency[4:7])
 		tmd['Brazil'] = calc.brazilExchangeBuyCoins(amount)
-		tmd['Venezuela'] = calc.venezuelaExchangeSellCoins(tmd['Brazil'][tmd['Brazil']['Best']]['coinsExchanged'])
+		tmd['Venezuela'] = calc.venezuelaExchangeSellCoins(tmd['Brazil'][tmd['Brazil']['Best']]['coinsExchanged'],"VEF")
 		tmd['bitnexoExchangeRate'] = calc.bitnexoExchangeRate(tmd['Brazil'],tmd['Venezuela'])
 		tmd['percentDifference'] = calc.percentDifference(tmd['exhangeRate'],tmd['bitnexoExchangeRate'])
 	elif currency == 'VEF-BRL':

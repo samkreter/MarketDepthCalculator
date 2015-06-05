@@ -8,16 +8,17 @@ class MarketDepthCalculator:
 	
 	#setting the url for the exhanges api
 	def __init__(self):
-		#CHina's exchanges
-		self.okcoin_market_depth_url = "https://www.okcoin.cn/api/depth.do"
-		self.btcchina_market_depth_url = "https://data.btcchina.com/data/orderbook?limit=200"
-		#Chile's Exchanges
-		self.chileBit_market_depth_url = "https://api.blinktrade.com/api/v1/CLP/orderbook?crypto_currency=BTC"
-		#Brazil's Exchanges
-		self.foxBit_market_depth_url = "https://api.blinktrade.com/api/v1/BRL/orderbook?crypto_currency=BTC"
-		#Venezuela's exhcnages
-		self.surBitCoin_market_depth_url = "https://api.blinktrade.com/api/v1/VEF/orderbook?crypto_currency=BTC"
-		
+
+		self.exchangeURLs = {"ChileBit":"https://api.blinktrade.com/api/v1/CLP/orderbook?crypto_currency=BTC",
+							 "BTCChina":"https://data.btcchina.com/data/orderbook?limit=200",
+							 "OKCoin":"https://www.okcoin.cn/api/depth.do",
+							 "SurBitCoin":"https://api.blinktrade.com/api/v1/VEF/orderbook?crypto_currency=BTC",
+							 "FoxBit":"https://api.blinktrade.com/api/v1/BRL/orderbook?crypto_currency=BTC"}
+
+		self.exchangeReference = {"CLP":["ChileBit"],
+								  "RMB":["BTCChina","OKCoin"],
+								  "VEF":["SurBitCoin"],
+								  "BRL":["FoxBit"]}
 
 		self.open_exchange_rates_url = Variables.open_exchange_rates_url
 		self.price = 0
@@ -78,26 +79,31 @@ class MarketDepthCalculator:
 
 
 	#controling venezuela's exchanges in the selling of coins 
-	def venezuelaExchangeSellCoins(self,coins):
-
-		surBitCoinStart_time = time.time()
-		surBitCoin_market_depth = json.loads(urllib2.urlopen(self.surBitCoin_market_depth_url).read())
-		print "surBitCoin Execution Time = ",time.time() - surBitCoinStart_time
-
+	def ExchangeSellCoins(self,coins,name):
+		market_depth = dict()
 		totalMarketBuyData = dict()
-		totalMarketBuyData['SurBitCoin'] = self.calculate_sell_bitcoins(coins,surBitCoin_market_depth['bids'])
+		for exchange in self.exchangeReference[name]:
+			Start_time = time.time()
+			market_depth[exchange] = json.loads(urllib2.urlopen(self.exchangeURLs[exchange]).read())
+			print exchange," Execution Time = ",time.time() - Start_time
+			totalMarketBuyData[exchange] = self.calculate_sell_bitcoins(coins,market_depth[exchange]['bids'])
+		
 		totalMarketBuyData['Best'] = self.findBest(totalMarketBuyData)
 		return totalMarketBuyData	
 
 	#controling venezuelas's exchanges for the buying of coins 
-	def venezuelaExchangeBuyCoins(self,money):
-		#testing the time for each api call
-		surBitCoinStart_time = time.time()
-		surBitCoin_market_depth = json.loads(urllib2.urlopen(self.surBitCoin_market_depth_url).read())
-		print "surBitCoin Execution Time = ",time.time() - surBitCoinStart_time
-
+	def ExchangeBuyCoins(self,money,name):
+		market_depth = dict()
 		totalMarketBuyData = dict()
-		totalMarketBuyData['SurBitCoin'] = self.calculate_buy_bitcoins(money,surBitCoin_market_depth['asks'],0)
+		for exchange in self.exchangeReference[name]:
+			#testing the time for each api call
+			Start_time = time.time()
+			market_depth[exchange] = json.loads(urllib2.urlopen(self.exchangeURLs[exchange]).read())
+			print exchange," Execution Time = ",time.time() - Start_time
+
+			totalMarketBuyData = dict()
+			totalMarketBuyData[exchange] = self.calculate_buy_bitcoins(money,market_depth[exchange]['asks'],0)
+		
 		totalMarketBuyData['Best'] = self.findBest(totalMarketBuyData)
 
 		totalMarketBuyData['amount'] = money
@@ -123,7 +129,7 @@ class MarketDepthCalculator:
 	def brazilExchangeBuyCoins(self,money):
 		#testing the time for each api call
 		foxBitStart_time = time.time()
-		foxBit_market_depth = json.loads(urllib2.urlopen(self.foxBit_market_depth_url).read())
+		foxBit_market_depth = json.loads(urllib2.urlopen(self.exchangeURLs['FoxBit']).read())
 		print "foxBit Execution Time = ",time.time() - foxBitStart_time
 
 		totalMarketBuyData = dict()
