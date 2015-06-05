@@ -15,9 +15,9 @@ $( function() {
 
     	$('#RMB-CLP-Result').html(chile[chile['Best']]['moneyExchanged'].toFixed(2))
     	// $('.inner-container').prepend('<div id="real-exchange-rate" class="row"><div class="col-md-2 center-bootstrap text-center"><label>Actual Exchange Rate</label><div id="BTCChina-value"class="form-control boldedNumbers" ></div></div></div>')	    
-		
+
 		//add the percent differnce box to the page 
-		$('#China-Exchange-Group').append('<label>Percent Differece</label><div id="percentDifference-value"class="form-control boldedNumbers shortBox">%'+china['PercentDifference'].toFixed(3)+'</div>')
+		$('#first-exchange-blockRMB-CLP').append('<label>Bitnexo Exchange Rate</label><div class="form-control boldedNumbers shortBox">'+data['bitnexoExchangeRate'].toFixed(2)+'</div>')
 	}
 
 	function ClpRmb(data){
@@ -34,11 +34,7 @@ $( function() {
 
     	$('#CLP-RMB-Result').html(china[china['Best']]['moneyExchanged'].toFixed(2))
 
-  //   	//added the actual exchnage rate box to the page 
-  //   	$('.inner-container').prepend('<div id="real-exchange-rate" class="row"><div class="col-md-2 center-bootstrap text-center"><label>Actual Exchange Rate</label><div id="BTCChina-value"class="form-control boldedNumbers" ></div></div></div>')	    
-		
-		// //add the percent differnce box to the page 
-		// $('#China-Exchange-Group').append('<label>Percent Differece</label><div id="percentDifference-value"class="form-control boldedNumbers shortBox">%'+china['PercentDifference'].toFixed(3)+'</div>')
+    	$('#first-exchange-blockCLP-RMB').append('<label>Bitnexo Exchange Rate</label><div class="form-control boldedNumbers shortBox">'+data['bitnexoExchangeRate'].toFixed(2)+'</div>')
 	}
 
 	function RmbBrl(data){
@@ -57,7 +53,7 @@ $( function() {
     	// $('.inner-container').prepend('<div id="real-exchange-rate" class="row"><div class="col-md-2 center-bootstrap text-center"><label>Actual Exchange Rate</label><div id="BTCChina-value"class="form-control boldedNumbers" ></div></div></div>')	    
 		
 		//add the percent differnce box to the page 
-		$('#China-Exchange-Group').append('<label>Percent Differece</label><div id="percentDifference-value"class="form-control boldedNumbers shortBox">%'+china['PercentDifference'].toFixed(3)+'</div>')
+		$('#first-exchange-blockRMB-BRL').append('<label>Bitnexo Exchange Rate</label><div class="form-control boldedNumbers shortBox">'+data['bitnexoExchangeRate'].toFixed(2)+'</div>')
 
 	}
 
@@ -75,6 +71,8 @@ $( function() {
     	$('#'+brazil['Best']+'BRL-RMB-value').css("border-color","green");
 
     	$('#BRL-RMB-Result').html(china[china['Best']]['moneyExchanged'].toFixed(2))
+
+    	$('#first-exchange-blockBRL-RMB').append('<label>Bitnexo Exchange Rate</label><div class="form-control boldedNumbers shortBox">'+data['bitnexoExchangeRate'].toFixed(2)+'</div>')
 	}
 
 
@@ -94,8 +92,9 @@ $( function() {
     	// $('.inner-container').prepend('<div id="real-exchange-rate" class="row"><div class="col-md-2 center-bootstrap text-center"><label>Actual Exchange Rate</label><div id="BTCChina-value"class="form-control boldedNumbers" ></div></div></div>')	    
 		
 		//add the percent differnce box to the page 
-		$('#China-Exchange-Group').append('<label>Percent Differece</label><div id="percentDifference-value"class="form-control boldedNumbers shortBox">%'+china['PercentDifference'].toFixed(3)+'</div>')
+		$('#first-exchange-blockRMB-VEF').append('<label>Bitnexo Exchange Rate</label><div class="form-control boldedNumbers shortBox">'+data['bitnexoExchangeRate'].toFixed(2)+'</div>')
 
+	
 	}
 
 	function VefRmb(data){
@@ -112,6 +111,8 @@ $( function() {
     	$('#'+venezuela['Best']+'VEF-RMB-value').css("border-color","green");
 
     	$('#VEF-RMB-Result').html(china[china['Best']]['moneyExchanged'].toFixed(2))
+
+    	$('#first-exchange-blockVEF-RMB').append('<label>Bitnexo Exchange Rate</label><div class="form-control boldedNumbers shortBox">'+data['bitnexoExchangeRate'].toFixed(2)+'</div>')
 	}
 
 	function ClpBrl(data){
@@ -128,6 +129,8 @@ $( function() {
 
     	$('#CLP-BRL-Result').html(brazil[brazil['Best']]['moneyExchanged'].toFixed(2))
 
+    	$('#first-exchange-blockCLP-BRL').append('<label>Bitnexo Exchange Rate</label><div class="form-control boldedNumbers shortBox">'+data['bitnexoExchangeRate'].toFixed(2)+'</div>')
+
 	}
 
 	function BrlClp(data){
@@ -141,6 +144,8 @@ $( function() {
     	$('#'+chile['Best']+'BRL-CLP-value').css("border-color","green");
 
     	$('#BRL-CLP-Result').html(chile[chile['Best']]['moneyExchanged'].toFixed(2))
+
+    	$('#first-exchange-blockBRL-CLP').append('<label>Bitnexo Exchange Rate</label><div class="form-control boldedNumbers shortBox">'+data['bitnexoExchangeRate'].toFixed(2)+'</div>')
 	}
 
 	function ClpVef(data){
@@ -155,6 +160,8 @@ $( function() {
     	//added the actual exchnage rate box to the page 
 
     	$('#CLP-VEF-Result').html(venezuela[venezuela['Best']]['moneyExchanged'].toFixed(2))
+
+    	$('#first-exchange-blockCLP-VEF').append('<label>Bitnexo Exchange Rate</label><div class="form-control boldedNumbers shortBox">'+data['bitnexoExchangeRate'].toFixed(2)+'</div>')
 	}
 
 	function  VefClp(data){
@@ -168,6 +175,8 @@ $( function() {
     	$('#'+chile['Best']+'VEF-CLP-value').css("border-color","green");
 
     	$('#VEF-CLP-Result').html(chile[chile['Best']]['moneyExchanged'].toFixed(2))
+
+    	$('#first-exchange-blockVEF-CLP').append('<label>Bitnexo Exchange Rate</label><div class="form-control boldedNumbers shortBox">'+data['bitnexoExchangeRate'].toFixed(2)+'</div>')
 	}
 
 	function BrlVef(data){
@@ -182,6 +191,8 @@ $( function() {
     	//added the actual exchnage rate box to the page 
 
     	$('#BRL-VEF-Result').html(venezuela[venezuela['Best']]['moneyExchanged'].toFixed(2))
+
+    	$('#first-exchange-blockBRL-VEF').append('<label>Bitnexo Exchange Rate</label><div class="form-control boldedNumbers shortBox">'+data['bitnexoExchangeRate'].toFixed(2)+'</div>')
 	}
 
 	function VefBrl(data){
@@ -195,6 +206,8 @@ $( function() {
     	$('#'+brazil['Best']+'VEF-BRL-value').css("border-color","green");
 
     	$('#VEF-BRL-Result').html(brazil[brazil['Best']]['moneyExchanged'].toFixed(2))
+
+    	$('#first-exchange-blockVEF-BRL').append('<label>Bitnexo Exchange Rate</label><div class="form-control boldedNumbers shortBox">'+data['bitnexoExchangeRate'].toFixed(2)+'</div>')
 	}
 
 
@@ -209,7 +222,6 @@ $( function() {
 	        processData: false,
 	        contentType: false,
 	        success: function (data, status){
-	        	console.log(data['exhangeRate'])
 	        	switch(data['currency']){
 	        		case 'RMB-CLP':
 	        			RmbClp(data);
@@ -253,7 +265,7 @@ $( function() {
 	        			VefBrl(data);
 	        			break;
 	        	}
-
+	        	$('#second-exchange-block'+data['currency']).append('<label>Open 1 CNY to CLP Rate </label><div id="percentDifference-value"class="form-control boldedNumbers shortBox">'+data['exhangeRate'].toFixed(2)+'</div>')
 	        	$('#loading-modal').modal('hide');
 	        	
 	        }

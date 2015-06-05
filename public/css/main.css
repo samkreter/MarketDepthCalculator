@@ -22,3 +22,7 @@ div.heder-logo{
 	font-size: 40px;
 	font-weight: bold;
 }
+.position-center-modal{
+	position: relative;
+	left:128px;
+}

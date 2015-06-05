@@ -10,7 +10,7 @@
     <!-- Bootstrap -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- FontAwesome --> 
-    <link href="font-awesome-4.3.0/css/font-awesome.min.css">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- custome css -->
     <link href="main.css" rel="stylesheet">
 
@@ -29,7 +29,9 @@
 		  		<div id="loading-modal"class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="loading-modal" aria-hidden="true">
 					<div class="modal-dialog modal-sm">
 						<div class="modal-content">
-							<span class="loading">LOADING...</span>
+							<div class="row">
+								<i class="fa fa-spinner fa-pulse fa-5x position-center-modal"></i>
+							</div>
 						</div>
 	 				</div>
 				</div>
@@ -56,13 +58,13 @@
 								    <input type="number" name="amount-RMB-CLP" class="form-control"  placeholder="Enter Amount">
 								    <button type="submit" class="btn btn-default btn-margin-fix">RMB Exchange</button>
 								  </div>
-								  <div id="China-Exchange-Group" class="form-group col-md-3">
+								  <div id="first-exchange-blockRMB-CLP" class="form-group col-md-3">
 								    <label>BTCChina</label>
 								    <div id="BTCChinaRMB-CLP-value"class="form-control boldedNumbers has-success" ></div>
 									<label>OKCoin</label>
 								    <div id="OKCoinRMB-CLP-value"class="form-control boldedNumbers" ></div>
 								  </div>
-								  <div class="form-group col-md-3">
+								  <div id="second-exchange-blockRMB-CLP"class="form-group col-md-3">
 								    <label>Chilebit</label>
 								    <div id="ChileBitRMB-CLP-value"class="form-control boldedNumbers" placeholder="Password"></div>
 								    <label>SurBTC</label>
@@ -85,14 +87,14 @@
 								    <button id="CLP-RMB-submit" class="btn btn-default btn-margin-fix">CLP Exchange</button>
 								  </div>
 
-								  <div class="form-group col-md-3">
+								  <div id="first-exchange-blockCLP-RMB"class="form-group col-md-3">
 								    <label>Chilebit</label>
 								    <div id="ChileBitCLP-RMB-value"class="form-control boldedNumbers" placeholder="Password"></div>
 								    <label>SurBTC</label>
 								    <div id="BTC-value"class="form-control boldedNumbers" placeholder="Password"></div>
 								  </div>
 
-								  <div id="China-Exchange-Group" class="form-group col-md-3">
+								  <div id="second-exchange-blockCLP-RMB" class="form-group col-md-3">
 								    <label>BTCChina</label>
 								    <div id="BTCChinaCLP-RMB-value"class="form-control boldedNumbers has-success" ></div>
 									<label>OKCoin</label>
@@ -122,13 +124,13 @@
 								    <input type="number" name="amount-RMB-BRL" class="form-control">
 								    <button class="btn btn-default btn-margin-fix">RMB Exchange</button>
 								  </div>
-								  <div id="China-Exchange-Group" class="form-group col-md-3">
+								  <div id="first-exchange-blockRMB-BRL" class="form-group col-md-3">
 								    <label>BTCChina</label>
 								    <div id="BTCChinaRMB-BRL-value"class="form-control boldedNumbers has-success" ></div>
 									<label>OKCoin</label>
 								    <div id="OKCoinRMB-BRL-value"class="form-control boldedNumbers" ></div>
 								  </div>
-								  <div class="form-group col-md-3">
+								  <div id="second-exchange-blockRMB-BRL"class="form-group col-md-3">
 								    <label>FoxBit</label>
 								    <div id="FoxBitRMB-BRL-value"class="form-control boldedNumbers"></div>
 								  </div>
@@ -149,12 +151,12 @@
 								    <button class="btn btn-default btn-margin-fix">BRL Exchange</button>
 								  </div>
 
-								  <div class="form-group col-md-3">
+								  <div id="first-exchange-blockBRL-RMB" class="form-group col-md-3">
 								    <label>FoxBit</label>
 								    <div id="FoxBitBRL-RMB-value"class="form-control boldedNumbers"></div>
 								  </div>
 
-								  <div id="China-Exchange-Group" class="form-group col-md-3">
+								  <div id="second-exchange-blockBRL-RMB" class="form-group col-md-3">
 								    <label>BTCChina</label>
 								    <div id="BTCChinaBRL-RMB-value"class="form-control boldedNumbers has-success" ></div>
 									<label>OKCoin</label>
@@ -184,13 +186,13 @@
 								    <input type="number" name="amount-RMB-VEF" class="form-control">
 								    <button class="btn btn-default btn-margin-fix">RMB Exchange</button>
 								  </div>
-								  <div id="China-Exchange-Group" class="form-group col-md-3">
+								  <div id="first-exchange-blockRMB-VEF" class="form-group col-md-3">
 								    <label>BTCChina</label>
 								    <div id="BTCChinaRMB-VEF-value"class="form-control boldedNumbers has-success" ></div>
 									<label>OKCoin</label>
 								    <div id="OKCoinRMB-VEF-value"class="form-control boldedNumbers" ></div>
 								  </div>
-								  <div class="form-group col-md-3">
+								  <div id="second-exchange-blockRMB-VEF" class="form-group col-md-3">
 								    <label>SurBitCoin</label>
 								    <div id="SurBitCoinRMB-VEF-value"class="form-control boldedNumbers"></div>
 								  </div>
@@ -211,12 +213,12 @@
 								    <button class="btn btn-default btn-margin-fix">VEF Exchange</button>
 								  </div>
 
-								  <div class="form-group col-md-3">
+								  <div id="first-exchange-blockVEF-RMB" class="form-group col-md-3">
 								    <label>SurBitCoin</label>
 								    <div id="SurBitCoinVEF-RMB-value"class="form-control boldedNumbers"></div>
 								  </div>
 
-								  <div id="China-Exchange-Group" class="form-group col-md-3">
+								  <div id="second-exchange-blockVEF-RMB" class="form-group col-md-3">
 								    <label>BTCChina</label>
 								    <div id="BTCChinaVEF-RMB-value"class="form-control boldedNumbers has-success" ></div>
 									<label>OKCoin</label>
@@ -246,13 +248,13 @@
 								    <input type="number" name="amount-CLP-VEF" class="form-control">
 								    <button class="btn btn-default btn-margin-fix">CLP Exchange</button>
 								  </div>
-								  <div id="China-Exchange-Group" class="form-group col-md-3">
+								  <div id="first-exchange-blockCLP-VEF" class="form-group col-md-3">
 								    <label>ChileBit</label>
 								    <div id="ChileBitCLP-VEF-value"class="form-control boldedNumbers has-success" ></div>
 									<label>SurBit</label>
 								    <div id="SurBitCLP-VEF-value"class="form-control boldedNumbers" ></div>
 								  </div>
-								  <div class="form-group col-md-3">
+								  <div id="second-exchange-blockCLP-VEF" class="form-group col-md-3">
 								    <label>SurBitCoin</label>
 								    <div id="SurBitCoinCLP-VEF-value"class="form-control boldedNumbers"></div>
 								  </div>
@@ -273,12 +275,12 @@
 								    <button class="btn btn-default btn-margin-fix">VEF Exchange</button>
 								  </div>
 
-								  <div class="form-group col-md-3">
+								  <div id="first-exchange-blockVEF-CLP"class="form-group col-md-3">
 								    <label>SurBitCoin</label>
 								    <div id="SurBitCoinVEF-CLP-value"class="form-control boldedNumbers"></div>
 								  </div>
 
-								  <div id="China-Exchange-Group" class="form-group col-md-3">
+								  <div id="second-exchange-blockVEF-CLP" class="form-group col-md-3">
 								    <label>ChileBit</label>
 								    <div id="ChileBitVEF-CLP-value"class="form-control boldedNumbers has-success" ></div>
 									<label>SurBit</label>
@@ -308,13 +310,13 @@
 								    <input type="number" name="amount-CLP-BRL" class="form-control">
 								    <button class="btn btn-default btn-margin-fix">CLP Exchange</button>
 								  </div>
-								  <div id="China-Exchange-Group" class="form-group col-md-3">
+								  <div id="first-exchange-blockCLP-BRL" class="form-group col-md-3">
 								    <label>ChileBit</label>
 								    <div id="ChileBitCLP-BRL-value"class="form-control boldedNumbers has-success" ></div>
 									<label>SurBit</label>
 								    <div id="SurBitCLP-BRL-value"class="form-control boldedNumbers" ></div>
 								  </div>
-								  <div class="form-group col-md-3">
+								  <div id="second-exchange-blockCLP-BRL" class="form-group col-md-3">
 								    <label>FoxBit</label>
 								    <div id="FoxBitCLP-BRL-value"class="form-control boldedNumbers"></div>
 								  </div>
@@ -335,12 +337,12 @@
 								    <button class="btn btn-default btn-margin-fix">BRL Exchange</button>
 								  </div>
 
-								  <div class="form-group col-md-3">
+								  <div id="first-exchange-blockBRL-CLP"class="form-group col-md-3">
 								    <label>FoxBit</label>
 								    <div id="FoxBitBRL-CLP-value"class="form-control boldedNumbers"></div>
 								  </div>
 
-								  <div class="form-group col-md-3">
+								  <div id="second-exchange-blockBRL-CLP"class="form-group col-md-3">
 								    <label>ChileBit</label>
 								    <div id="ChileBitBRL-CLP-value"class="form-control boldedNumbers has-success" ></div>
 									<label>SurBit</label>
@@ -372,11 +374,11 @@
 								    <input type="number" name="amount-BRL-VEF" class="form-control">
 								    <button class="btn btn-default btn-margin-fix">BRL Exchange</button>
 								  </div>
-								  <div class="form-group col-md-3">
+								  <div id="first-exchange-blockBRL-VEF"class="form-group col-md-3">
 								    <label>FoxBit</label>
 								    <div id="FoxBitBRL-VEF-value"class="form-control boldedNumbers has-success" ></div>
 								  </div>
-								  <div class="form-group col-md-3">
+								  <div id="second-exchange-blockBRL-VEF"class="form-group col-md-3">
 								    <label>SurBitCoin</label>
 								    <div id="SurBitCoinBRL-VEF-value"class="form-control boldedNumbers"></div>
 								  </div>
@@ -397,12 +399,12 @@
 								    <button class="btn btn-default btn-margin-fix">VEF Exchange</button>
 								  </div>
 
-								  <div class="form-group col-md-3">
+								  <div id="first-exchange-blockVEF-BRL"class="form-group col-md-3">
 								    <label>SurBitCoin</label>
 								    <div id="SurBitCoinVEF-BRL-value"class="form-control boldedNumbers"></div>
 								  </div>
 
-								  <div class="form-group col-md-3">
+								  <div id="second-exchange-blockVEF-BRL"class="form-group col-md-3">
 								    <label>FoxBit</label>
 								    <div id="FoxBitVEF-BRL-value"class="form-control boldedNumbers has-success" ></div>
 								  </div>

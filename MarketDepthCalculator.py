@@ -24,9 +24,9 @@ class MarketDepthCalculator:
 		self.quan = 1
 
 
-	def percentDifference(self,buyData):
-		difference = abs(buyData['OKCoin']['coinsExchanged'] - buyData['BTCChina']['coinsExchanged'])
-		average = (buyData['OKCoin']['coinsExchanged'] + buyData['BTCChina']['coinsExchanged']) / 2
+	def percentDifference(self,num1,num2):
+		difference = abs(num1 - num2)
+		average = (num1 + num2) / 2
 		print "difference is: ",difference
 		print "average is : ",average
 		return (difference / average) * 100
@@ -40,6 +40,9 @@ class MarketDepthCalculator:
 				best = key
 		return best 
 	
+
+	def bitnexoExchangeRate(self,base,exchange):
+		return exchange[exchange['Best']]['moneyExchanged']/base['amount']
 
 
 	def exchangeRate(self,baseCurrency,exchangeCurrency):
@@ -97,7 +100,8 @@ class MarketDepthCalculator:
 		totalMarketBuyData['SurBitCoin'] = self.calculate_buy_bitcoins(money,surBitCoin_market_depth['asks'],0)
 		totalMarketBuyData['Best'] = self.findBest(totalMarketBuyData)
 
-		#totalMarketBuyData['PercentDifference'] = self.percentDifference(totalMarketBuyData)
+		totalMarketBuyData['amount'] = money
+
 		return totalMarketBuyData
 
 
@@ -126,7 +130,8 @@ class MarketDepthCalculator:
 		totalMarketBuyData['FoxBit'] = self.calculate_buy_bitcoins(money,foxBit_market_depth['asks'],0)
 		totalMarketBuyData['Best'] = self.findBest(totalMarketBuyData)
 
-		#totalMarketBuyData['PercentDifference'] = self.percentDifference(totalMarketBuyData)
+		totalMarketBuyData['amount'] = money
+
 		return totalMarketBuyData
 
 	#controling chile's exchanges in the selling of coins 
@@ -153,7 +158,8 @@ class MarketDepthCalculator:
 
 		totalMarketBuyData['Best'] = self.findBest(totalMarketBuyData)
 
-		#totalMarketBuyData['PercentDifference'] = self.percentDifference(totalMarketBuyData)
+		totalMarketBuyData['amount'] = money
+
 		return totalMarketBuyData
 
 	#controling chile's exchanges in the selling of coins 
@@ -190,7 +196,7 @@ class MarketDepthCalculator:
 
 		totalMarketBuyData['Best'] = self.findBest(totalMarketBuyData)
 
-		totalMarketBuyData['PercentDifference'] = self.percentDifference(totalMarketBuyData)
+		totalMarketBuyData['amount'] = money
 
 		return totalMarketBuyData
 
