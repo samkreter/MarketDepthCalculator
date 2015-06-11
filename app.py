@@ -48,6 +48,7 @@ def amount_form_ajax():
 	#total Market data
 	tmd = dict()
 
+
 	curr1 = currency[0:3]
 	curr2 = currency[4:7]
 	tmd['currency'] = currency
@@ -56,7 +57,7 @@ def amount_form_ajax():
 	print tmd[curr1]
 	if 'errors' in tmd[curr1]:
 		return tmd[curr1]
-	tmd[curr2] = calc.ExchangeSellCoins(tmd[curr1][tmd[curr1]['Best']]['coinsExchanged'],curr2)
+	tmd[curr2] = calc.ExchangeSellCoins(tmd[curr1]['exchanges'][tmd[curr1]['Best']]['coinsExchanged'],curr2)
 	if 'errors' in tmd[curr2]:
 		return tmd[curr1]
 	tmd['bitnexoExchangeRate'] = calc.bitnexoExchangeRate(tmd[curr1],tmd[curr2])

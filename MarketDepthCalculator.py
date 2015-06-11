@@ -48,7 +48,7 @@ class MarketDepthCalculator:
 	
 
 	def bitnexoExchangeRate(self,base,exchange):
-		return exchange[exchange['Best']]['moneyExchanged']/base['amount']
+		return exchange['exchanges'][exchange['Best']]['moneyExchanged']/base['amount']
 
 
 	def exchangeRate(self,baseCurrency,exchangeCurrency):
@@ -87,31 +87,36 @@ class MarketDepthCalculator:
 	def ExchangeSellCoins(self,coins,name):
 		market_depth = dict()
 		totalMarketBuyData = dict()
+		totalMarketBuyData['exchanges'] = dict()
 		for exchange in self.exchangeReference[name]:
+			
 			Start_time = time.time()
 			market_depth[exchange] = json.loads(urllib2.urlopen(self.exchangeURLs[exchange]).read())
 			print exchange," Execution Time = ",time.time() - Start_time
-			totalMarketBuyData[exchange] = self.calculate_sell_bitcoins(coins,market_depth[exchange]['bids'])
-			if 'errors' in totalMarketBuyData[exchange]:
-				return totalMarketBuyData[exchange]
+			
+			totalMarketBuyData['exchanges'][exchange] = self.calculate_sell_bitcoins(coins,market_depth[exchange]['bids'])
+			
+			if 'errors' in totalMarketBuyData['exchanges'][exchange]:
+				return totalMarketBuyData['exchanges'][exchange]
 
-		totalMarketBuyData['Best'] = self.findBest(totalMarketBuyData)
+		totalMarketBuyData['Best'] = self.findBest(totalMarketBuyData['exchanges'])
 		return totalMarketBuyData	
 
 	#controling exchanges for the buying of coins 
 	def ExchangeBuyCoins(self,money,name):
 		market_depth = dict()
 		totalMarketBuyData = dict()
+		totalMarketBuyData['exchanges'] = dict()
 		for exchange in self.exchangeReference[name]:
 			#testing the time for each api call
 			Start_time = time.time()
 			market_depth[exchange] = json.loads(urllib2.urlopen(self.exchangeURLs[exchange]).read())
 			print exchange," Execution Time = ",time.time() - Start_time
-			totalMarketBuyData[exchange] = self.calculate_buy_bitcoins(money,market_depth[exchange]['asks'],self.exchangeDepth[exchange])
-			if 'errors' in totalMarketBuyData[exchange]:
-				return totalMarketBuyData[exchange]
+			totalMarketBuyData['exchanges'][exchange] = self.calculate_buy_bitcoins(money,market_depth[exchange]['asks'],self.exchangeDepth[exchange])
+			if 'errors' in totalMarketBuyData['exchanges'][exchange]:
+				return totalMarketBuyData['exchanges'][exchange]
 		
-		totalMarketBuyData['Best'] = self.findBest(totalMarketBuyData)
+		totalMarketBuyData['Best'] = self.findBest(totalMarketBuyData['exchanges'])
 
 		totalMarketBuyData['amount'] = money
 
