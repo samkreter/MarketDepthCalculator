@@ -34,7 +34,7 @@ $( function() {
     	// $('.inner-container').prepend('<div id="real-exchange-rate" class="row"><div class="col-md-2 center-bootstrap text-center"><label>Actual Exchange Rate</label><div id="BTCChina-value"class="form-control boldedNumbers" ></div></div></div>')	    
 
 		//add the percent differnce box to the page 
-		$('#first-exchange-block'+data['currency']).append('<label>Bitnexo Exchange Rate</label><div class="form-control boldedNumbers shortBox">'+data['bitnexoExchangeRate'].toFixed(2)+'</div>')
+		$('#second-exchange-block'+data['currency']).append('<label>Bitnexo Exchange Rate</label><div class="form-control boldedNumbers shortBox">'+data['bitnexoExchangeRate'].toFixed(2)+'</div>')
 		
 		$('#'+data['currency']+'-Result').after('<label>Percent Differece</label><div class="form-control boldedNumbers shortBox percentDifference-value">%'+Math.abs(data['percentDifference']).toFixed(3)+'</div>')
 
@@ -66,7 +66,7 @@ $( function() {
 	        	
 	        	handleExchangeData(data);
 
-	        	$('#second-exchange-block'+data['currency']).append('<label>Open 1 CNY to CLP Rate </label><div id="percentDifference-value"class="form-control boldedNumbers shortBox">'+data['exhangeRate'].toFixed(2)+'</div>')
+	        	$('#first-exchange-block'+data['currency']).append('<label>Open 1 CNY to CLP Rate </label><div id="percentDifference-value"class="form-control boldedNumbers shortBox">'+data['exhangeRate'].toFixed(2)+'</div>')
 	        	$('#loading-modal').modal('hide');
 	        	
 	        }
