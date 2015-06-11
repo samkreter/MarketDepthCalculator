@@ -148,7 +148,6 @@ $( function() {
 	function ClpBrl(data){
 		brazil = data['BRL']
 		chile = data['CLP']
-		console.log(brazil)
 		//add the bitcoin amounts to the appropriote boxes 
     	$('#FoxBitCLP-BRL-value').html(brazil['FoxBit']['moneyExchanged'].toFixed(2));
     	$('#ChileBitCLP-BRL-value').html(chile['ChileBit']['coinsExchanged'].toFixed(8));
@@ -264,6 +263,12 @@ $( function() {
 	}
 
 
+	function errorHandling(errors){
+		$(".tab-content").prepend('<div class="errors-formating">'+errors+'</div>');
+		$('#loading-modal').modal('hide');
+
+	}
+
 
 	$(document).on("submit", "form", function(event){
 	    event.preventDefault();
@@ -275,6 +280,10 @@ $( function() {
 	        processData: false,
 	        contentType: false,
 	        success: function (data, status){
+	        	if(data["errors"]){
+	        		errorHandling(data.errors);
+	        		return;
+	        	}
 	        	switch(data['currency']){
 	        		case 'RMB-CLP':
 	        			RmbClp(data);
@@ -318,6 +327,7 @@ $( function() {
 	        			VefBrl(data);
 	        			break;
 	        	}
+
 	        	$('#second-exchange-block'+data['currency']).append('<label>Open 1 CNY to CLP Rate </label><div id="percentDifference-value"class="form-control boldedNumbers shortBox">'+data['exhangeRate'].toFixed(2)+'</div>')
 	        	$('#loading-modal').modal('hide');
 	        	

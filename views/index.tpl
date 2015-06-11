@@ -11,6 +11,8 @@
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- FontAwesome --> 
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- <link rel="stylesheet" type="text/css" href="font-awesome/fonts/fontawesome-webfont.woff2"> -->
     <!-- custome css -->
     <link href="main.css" rel="stylesheet">
 
@@ -29,12 +31,14 @@
 		  		<div id="loading-modal"class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="loading-modal" aria-hidden="true">
 					<div class="modal-dialog modal-sm">
 						<div class="modal-content">
-							<div class="row">
-								<i class="fa fa-spinner fa-pulse fa-5x position-center-modal"></i>
+							<div class="loading">
+							LOADING
 							</div>
 						</div>
 	 				</div>
 				</div>
+
+				
 
 		  		<div role="tabpanel">
 				  <!-- Nav tabs -->

@@ -92,7 +92,9 @@ class MarketDepthCalculator:
 			market_depth[exchange] = json.loads(urllib2.urlopen(self.exchangeURLs[exchange]).read())
 			print exchange," Execution Time = ",time.time() - Start_time
 			totalMarketBuyData[exchange] = self.calculate_sell_bitcoins(coins,market_depth[exchange]['bids'])
-		
+			if 'errors' in totalMarketBuyData[exchange]:
+				return totalMarketBuyData[exchange]
+
 		totalMarketBuyData['Best'] = self.findBest(totalMarketBuyData)
 		return totalMarketBuyData	
 
@@ -106,14 +108,14 @@ class MarketDepthCalculator:
 			market_depth[exchange] = json.loads(urllib2.urlopen(self.exchangeURLs[exchange]).read())
 			print exchange," Execution Time = ",time.time() - Start_time
 			totalMarketBuyData[exchange] = self.calculate_buy_bitcoins(money,market_depth[exchange]['asks'],self.exchangeDepth[exchange])
+			if 'errors' in totalMarketBuyData[exchange]:
+				return totalMarketBuyData[exchange]
 		
 		totalMarketBuyData['Best'] = self.findBest(totalMarketBuyData)
 
 		totalMarketBuyData['amount'] = money
 
 		return totalMarketBuyData
-
-
 
 
 	#use the api information to find the marketdepth for the money amount provided 
@@ -133,7 +135,7 @@ class MarketDepthCalculator:
 		except Exception:
 			print "unable to calculate due to lack of sellers"
 			print "depth reached was {0}".format(len(sells) - depth)
-			return
+			return dict(errors="Insufficient Liquidity")
 
 		#catch the final seller and add the correct amount of bitcoins to the coinsExchanged var
 		if currMoney > 0:
@@ -164,6 +166,7 @@ class MarketDepthCalculator:
 			print "unable to calculate due to lack of buyers"
 			print "depth reached was {0}".format(depth)
 			print "coins sold reached {0}".format(currSellCoins)
+			return dict(errors="Insufficient Liquidity")
 
 		if currSellCoins > 0:
 			moneyExchanged = moneyExchanged + (buys[depth][self.price] * currSellCoins)

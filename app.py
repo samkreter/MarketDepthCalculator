@@ -47,13 +47,18 @@ def amount_form_ajax():
 	calc = MarketDepthCalculator()
 	#total Market data
 	tmd = dict()
-	
+
 	curr1 = currency[0:3]
 	curr2 = currency[4:7]
 	tmd['currency'] = currency
 	tmd['exhangeRate'] = calc.exchangeRate(curr1,curr2)
 	tmd[curr1] = calc.ExchangeBuyCoins(amount,curr1)
+	print tmd[curr1]
+	if 'errors' in tmd[curr1]:
+		return tmd[curr1]
 	tmd[curr2] = calc.ExchangeSellCoins(tmd[curr1][tmd[curr1]['Best']]['coinsExchanged'],curr2)
+	if 'errors' in tmd[curr2]:
+		return tmd[curr1]
 	tmd['bitnexoExchangeRate'] = calc.bitnexoExchangeRate(tmd[curr1],tmd[curr2])
 	tmd['percentDifference'] = calc.percentDifference(tmd['exhangeRate'],tmd['bitnexoExchangeRate'])
 	return tmd
