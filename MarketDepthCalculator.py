@@ -73,7 +73,7 @@ class MarketDepthCalculator:
 		f.close()
 
 
-   		if time.time() - float(lastCallInfo['timestamp']) > 3600:
+		if time.time() - float(lastCallInfo['timestamp']) > 3600:
 			print("making new api Exhcnage Data call")
 			openExchangeRateData = json.loads(urllib2.urlopen(self.open_exchange_rates_url).read())
 			openExchangeRateData['timestamp'] = time.time()
@@ -82,11 +82,11 @@ class MarketDepthCalculator:
 				json.dump(openExchangeRateData,f)
 				f.truncate()
 				f.close()
-   		else:
-   			print("using stored openExchange data")
-   			openExchangeRateData = lastCallInfo
+		else:
+			print("using stored openExchange data")
+			openExchangeRateData = lastCallInfo
 
-   		return openExchangeRateData
+		return openExchangeRateData
 
 
 	#controling exchanges in the selling of coins 

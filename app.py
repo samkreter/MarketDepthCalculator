@@ -34,7 +34,7 @@ def javascripts(filename):
 	return static_file(filename, root='public/js')
 @route('/<filename:re:.*\.css>')
 def stylesheets(filename):
-    return static_file(filename, root='public/css')
+	return static_file(filename, root='public/css')
 
 
 
