@@ -9,27 +9,32 @@ class MarketDepthCalculator:
 	#setting the url for the exhanges api
 	def __init__(self):
 
+		#exchnages api urls
 		self.exchangeURLs = {"ChileBit":"https://api.blinktrade.com/api/v1/CLP/orderbook?crypto_currency=BTC",
 							 "BTCChina":"https://data.btcchina.com/data/orderbook?limit=200",
 							 "OKCoin":"https://www.okcoin.cn/api/depth.do",
 							 "SurBitCoin":"https://api.blinktrade.com/api/v1/VEF/orderbook?crypto_currency=BTC",
 							 "FoxBit":"https://api.blinktrade.com/api/v1/BRL/orderbook?crypto_currency=BTC"}
 
+		#tell the exchanges for each country 
 		self.exchangeReference = {"CLP":["ChileBit"],
 								  "RMB":["BTCChina","OKCoin"],
 								  "VEF":["SurBitCoin"],
 								  "BRL":["FoxBit"]}
+		#tell the market depth needed for accurate functions
 		self.exchangeDepth = {"ChileBit":0,
 							  "BTCChina":199,
 							  "OKCoin":199,
 							  "SurBitCoin":0,
 							  "FoxBit":0}
-
+		#get the url from the other api file
 		self.open_exchange_rates_url = Variables.open_exchange_rates_url
+		
+		#easier reference instead of 1 and 0 for the quantity and price 
 		self.price = 0
 		self.quan = 1
 
-
+	#finds the percent difference of two numbers
 	def percentDifference(self,num1,num2):
 		difference = num2 - num1
 		average = (num2 + num1) / 2
@@ -37,6 +42,7 @@ class MarketDepthCalculator:
 		print "average is : ",average
 		return (difference / average) * 100
 
+	#finds the best exhcnage
 	def findBest(self,data):
 		best = ''
 		amount = 0
@@ -46,11 +52,11 @@ class MarketDepthCalculator:
 				best = key
 		return best 
 	
-
+	#return the exchange rate based on going through the bitcoin market
 	def bitnexoExchangeRate(self,base,exchange):
 		return exchange['exchanges'][exchange['Best']]['moneyExchanged']/base['amount']
 
-
+	#return the most current exchange rates 
 	def exchangeRate(self,baseCurrency,exchangeCurrency):
 		if baseCurrency == 'RMB':
 			baseCurrency = 'CNY' 
@@ -60,7 +66,7 @@ class MarketDepthCalculator:
 		return 1/data['rates'][baseCurrency]*data['rates'][exchangeCurrency]
 
 
-
+	#check the exchangerate data to only make api call once an hour 
 	def exchangeRateDataSetup(self):
 		f = open("openExchangeRateData.txt")
 		lastCallInfo = json.loads(f.read())
