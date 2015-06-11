@@ -38,8 +38,8 @@ class MarketDepthCalculator:
 	def percentDifference(self,num1,num2):
 		difference = num2 - num1
 		average = (num2 + num1) / 2
-		print "difference is: ",difference
-		print "average is : ",average
+		print("difference is: ",difference)
+		print("average is : ",average)
 		return (difference / average) * 100
 
 	#finds the best exhcnage
@@ -74,7 +74,7 @@ class MarketDepthCalculator:
 
 
    		if time.time() - float(lastCallInfo['timestamp']) > 3600:
-			print "making new api Exhcnage Data call"
+			print("making new api Exhcnage Data call")
 			openExchangeRateData = json.loads(urllib2.urlopen(self.open_exchange_rates_url).read())
 			openExchangeRateData['timestamp'] = time.time()
 			with open("openExchangeRateData.txt",'w') as f:
@@ -83,7 +83,7 @@ class MarketDepthCalculator:
 				f.truncate()
 				f.close()
    		else:
-   			print "using stored openExchange data"
+   			print("using stored openExchange data")
    			openExchangeRateData = lastCallInfo
 
    		return openExchangeRateData
@@ -98,7 +98,7 @@ class MarketDepthCalculator:
 			
 			Start_time = time.time()
 			market_depth[exchange] = json.loads(urllib2.urlopen(self.exchangeURLs[exchange]).read())
-			print exchange," Execution Time = ",time.time() - Start_time
+			print(exchange," Execution Time = ",time.time() - Start_time)
 			
 			totalMarketBuyData['exchanges'][exchange] = self.calculate_sell_bitcoins(coins,market_depth[exchange]['bids'])
 			
@@ -117,7 +117,7 @@ class MarketDepthCalculator:
 			#testing the time for each api call
 			Start_time = time.time()
 			market_depth[exchange] = json.loads(urllib2.urlopen(self.exchangeURLs[exchange]).read())
-			print exchange," Execution Time = ",time.time() - Start_time
+			print(exchange," Execution Time = ",time.time() - Start_time)
 			totalMarketBuyData['exchanges'][exchange] = self.calculate_buy_bitcoins(money,market_depth[exchange]['asks'],self.exchangeDepth[exchange])
 			if 'errors' in totalMarketBuyData['exchanges'][exchange]:
 				return totalMarketBuyData['exchanges'][exchange]
@@ -144,8 +144,8 @@ class MarketDepthCalculator:
 				depth = depth + varient
 		#if the exception is thrown, the amount exceeded the limit that the api gives out
 		except Exception:
-			print "unable to calculate due to lack of sellers"
-			print "depth reached was {0}".format(len(sells) - depth)
+			print("unable to calculate due to lack of sellers")
+			print("depth reached was {0}".format(len(sells) - depth))
 			return dict(errors="Insufficient Liquidity")
 
 		#catch the final seller and add the correct amount of bitcoins to the coinsExchanged var
@@ -153,11 +153,11 @@ class MarketDepthCalculator:
 			coinsExchanged = coinsExchanged + (currMoney / sells[depth][self.price])
 
 		#testing accuracy 
-		print "total bitcoins bought: {0}".format(coinsExchanged)
-		print "total market depth reached: {0}".format(len(sells) - depth)
-		print "total money spent: ${0}".format(money) 
-		print "average price: ${0}".format(money/coinsExchanged)
-		print " "
+		print("total bitcoins bought: {0}".format(coinsExchanged))
+		print("total market depth reached: {0}".format(len(sells) - depth))
+		print("total money spent: ${0}".format(money))
+		print("average price: ${0}".format(money/coinsExchanged))
+		print(" ")
 
 		#return the necssary data
 		return dict(coinsExchanged=coinsExchanged,depth=(len(sells) - depth))
@@ -174,17 +174,17 @@ class MarketDepthCalculator:
 				currSellCoins = currSellCoins - buys[depth][self.quan]
 				depth = depth + 1 
 		except:
-			print "unable to calculate due to lack of buyers"
-			print "depth reached was {0}".format(depth)
-			print "coins sold reached {0}".format(currSellCoins)
+			print("unable to calculate due to lack of buyers")
+			print("depth reached was {0}".format(depth))
+			print("coins sold reached {0}".format(currSellCoins))
 			return dict(errors="Insufficient Liquidity")
 
 		if currSellCoins > 0:
 			moneyExchanged = moneyExchanged + (buys[depth][self.price] * currSellCoins)
 
-		print "total bitcoins sold: {0}".format(coins)
-		print "total market depth reached: {0}".format(depth)
-		print "total money exchanged for: ${0}".format(moneyExchanged) 
+		print("total bitcoins sold: {0}".format(coins))
+		print("total market depth reached: {0}".format(depth))
+		print("total money exchanged for: ${0}".format(moneyExchanged))
 
 		return dict(moneyExchanged=moneyExchanged,depth=depth)
 

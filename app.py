@@ -41,7 +41,7 @@ def stylesheets(filename):
 #App routes
 @route('/amount_form_ajax', method="POST")
 def amount_form_ajax():
-	print "ajax called triggered"
+	print("ajax called triggered")
 	currency = request.forms.get('currency')
 	#get the amount from the form
 	amount = float(request.forms.get("amount-{0}".format(currency)))

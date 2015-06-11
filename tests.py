@@ -1,5 +1,16 @@
 from MarketDepthCalculator import MarketDepthCalculator
+from urllib2 import Request, urlopen
 
-c = MarketDepthCalculator()
+values = """
+  {
+    "productPair": "BTCMXN"
+  }
+"""
 
-print c.exhcnageReference
+headers = {
+  'Content-Type': 'application/json'
+}
+request = Request('https://public-api.mexbt.com/v1/order-book', data=values, headers=headers)
+
+response_body = urlopen(request).read()
+print response_body
