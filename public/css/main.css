@@ -34,3 +34,11 @@ div.heder-logo{
 	border-radius: 4px;
 	font-weight: 900;
 }
+.warning-formating{
+	background-color:rgb(255, 250, 184);
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	font-weight: 900;
+}

@@ -5,10 +5,24 @@ $( function() {
 	function differenceHighlight(data){
 		if(data['percentDifference'] < 0){
     		$('.percentDifference-value').css("border-color","red");
+    		percentValueWarnings(data);
     	}
     	else{
     		$('.percentDifference-value').css("border-color","green");
     	}
+	}
+
+	function percentValueWarnings(data){
+		percentD = data['percentDifference']
+		if (percentD < -1 && percentD > -2){
+			console.log("inside sweet zho")
+			$('.warning-formating').remove();
+			$('.tab-content').prepend('<div class="warning-formating">You will be losing 1%-2% at this time</div>');
+		}
+		if (percentD <= -2){
+			$(".errors-formating").remove();
+			$('.tab-content').prepend('<div class="errors-formating">You will be losing over the profit point</div>');
+		}
 	}
 
 	function handleExchangeData(data){
@@ -44,6 +58,7 @@ $( function() {
 
 
 	function errorHandling(errors){
+		$(".errors-formating").remove();
 		$(".tab-content").prepend('<div class="errors-formating">'+errors+'</div>');
 		$('#loading-modal').modal('hide');
 
