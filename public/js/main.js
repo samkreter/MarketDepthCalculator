@@ -34,9 +34,10 @@ $( function() {
     	// $('.inner-container').prepend('<div id="real-exchange-rate" class="row"><div class="col-md-2 center-bootstrap text-center"><label>Actual Exchange Rate</label><div id="BTCChina-value"class="form-control boldedNumbers" ></div></div></div>')	    
 
 		//add the percent differnce box to the page 
-		$('#second-exchange-block'+data['currency']).append('<label>Bitnexo Exchange Rate</label><div class="form-control boldedNumbers shortBox">'+data['bitnexoExchangeRate'].toFixed(2)+'</div>')
+		$('#second-exchange-block'+data['currency'])
+		$('#second-exchange-block'+data['currency']).append('<div class="refresh-divs"><label>Bitnexo Exchange Rate</label><div class="form-control boldedNumbers shortBox">'+data['bitnexoExchangeRate'].toFixed(2)+'</div></div>')
 		
-		$('#'+data['currency']+'-Result').after('<label>Percent Differece</label><div class="form-control boldedNumbers shortBox percentDifference-value">%'+Math.abs(data['percentDifference']).toFixed(3)+'</div>')
+		$('#'+data['currency']+'-Result').after('<div class="refresh-divs"><label>Percent Differece</label><div class="form-control boldedNumbers shortBox percentDifference-value">%'+Math.abs(data['percentDifference']).toFixed(3)+'</div></div>')
 
 		differenceHighlight(data)
 	}
@@ -59,6 +60,7 @@ $( function() {
 	        processData: false,
 	        contentType: false,
 	        success: function (data, status){
+	        	$('.refresh-divs').remove()
 	        	if(data["errors"]){
 	        		errorHandling(data.errors);
 	        		return;
@@ -66,7 +68,7 @@ $( function() {
 	        	
 	        	handleExchangeData(data);
 
-	        	$('#first-exchange-block'+data['currency']).append('<label>Open 1 CNY to CLP Rate </label><div id="percentDifference-value"class="form-control boldedNumbers shortBox">'+data['exhangeRate'].toFixed(2)+'</div>')
+	        	$('#first-exchange-block'+data['currency']).append('<div class="refresh-divs"><label>Open 1 CNY to CLP Rate </label><div id="percentDifference-value"class="form-control boldedNumbers shortBox">'+data['exhangeRate'].toFixed(2)+'</div><div>')
 	        	$('#loading-modal').modal('hide');
 	        	
 	        }
