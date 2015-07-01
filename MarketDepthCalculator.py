@@ -15,10 +15,11 @@ class MarketDepthCalculator:
 							 "OKCoin":"https://www.okcoin.cn/api/depth.do",
 							 "SurBitCoin":"https://api.blinktrade.com/api/v1/VEF/orderbook?crypto_currency=BTC",
 							 "FoxBit":"https://api.blinktrade.com/api/v1/BRL/orderbook?crypto_currency=BTC",
-							 "MexBT":"https://data.mexbt.com/order-book/btcmxn"}
+							 "MexBT":"https://data.mexbt.com/order-book/btcmxn",
+							 "SurBTC":"https://www.surbtc.com/api/v1/markets/btc-clp/order_book.json"}
 
 		#tell the exchanges for each country 
-		self.exchangeReference = {"CLP":["ChileBit"],
+		self.exchangeReference = {"CLP":["ChileBit","SurBTC"],
 								  "RMB":["BTCChina","OKCoin"],
 								  "VEF":["SurBitCoin"],
 								  "BRL":["FoxBit"],
@@ -29,7 +30,8 @@ class MarketDepthCalculator:
 							  "OKCoin":199,
 							  "SurBitCoin":0,
 							  "FoxBit":0,
-							  "MexBT":0}
+							  "MexBT":0,
+							  "SurBTC":0}
 		#get the url from the other api file
 		self.open_exchange_rates_url = Variables.open_exchange_rates_url
 		
