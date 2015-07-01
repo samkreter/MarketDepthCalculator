@@ -1,6 +1,6 @@
 from bottle import route,request, response, run, template, static_file
 from MarketDepthCalculator import MarketDepthCalculator
-
+import exchangeInfo
 # @get('/<filename:re:.*\.(jpg|png|gif|ico)>')
 # def images(filename):
 #     return static_file(filename, root='static/img')
