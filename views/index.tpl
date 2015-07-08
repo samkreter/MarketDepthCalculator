@@ -70,7 +70,7 @@
 								  </div>
 								  <div id="second-exchange-blockRMB-CLP"class="form-group col-md-3">
 								    <label>Chilebit</label>
-								    <div id="ChileBitRMB-CLP-value"class="form-control boldedNumbers" placeholder="Password"></div>
+								    <div id="ChileBitRMB-CLP-value"class="form-control boldedNumbers"></div>
 								    <label>SurBTC</label>
 								    <div id="BTC-value"class="form-control boldedNumbers"></div>
 								  </div>
@@ -93,9 +93,9 @@
 
 								  <div id="first-exchange-blockCLP-RMB"class="form-group col-md-3">
 								    <label>Chilebit</label>
-								    <div id="ChileBitCLP-RMB-value"class="form-control boldedNumbers" placeholder="Password"></div>
+								    <div id="ChileBitCLP-RMB-value"class="form-control boldedNumbers"></div>
 								    <label>SurBTC</label>
-								    <div id="BTC-value"class="form-control boldedNumbers" placeholder="Password"></div>
+								    <div id="BTC-value"class="form-control boldedNumbers" ></div>
 								  </div>
 
 								  <div id="second-exchange-blockCLP-RMB" class="form-group col-md-3">
