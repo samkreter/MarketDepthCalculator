@@ -41,9 +41,20 @@
 
 		    	<form role="form">
 					  <div class="row">
-					  	<div class="form-group col-md-2">
-					  	<button></button>
-					  	</div>
+					  	<div class="dropdown">
+						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						    Currencies
+						    <span class="caret"></span>
+						  </button>
+						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+						    % for curr in exhangeData:
+						    <li><a href="#">{{curr}}</a></li>
+						    % end
+						    <li><a href="#">Another action</a></li>
+						    <li><a href="#">Something else here</a></li>
+						    <li><a href="#">Separated link</a></li>
+						  </ul>
+						</div>
 						  <div class="form-group col-md-2">
 						    <label>RMB</label>
 						    <input type="number" name="amount-RMB-CLP" class="form-control"  placeholder="Enter Amount">

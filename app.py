@@ -1,6 +1,6 @@
 from bottle import route,request, response, run, template, static_file
 from MarketDepthCalculator import MarketDepthCalculator
-import exchangeInfo
+import ExchangeInfo
 # @get('/<filename:re:.*\.(jpg|png|gif|ico)>')
 # def images(filename):
 #     return static_file(filename, root='static/img')
@@ -70,7 +70,10 @@ def amount_form_ajax():
 	
 	return tmd
 	
-
+@route('/test')
+def test():
+	currencies = {"RMB","CLP","VEF","BRL","MXN"}
+	return template('test',exhangeData=currencies)
 #create the index route for the main page 
 @route('/')
 def index():

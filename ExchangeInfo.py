@@ -6,3 +6,5 @@ exchangeReference = {"CLP":["ChileBit"],
 					  "VEF":["SurBitCoin"],
 					  "BRL":["FoxBit"],
 					  "MXN":["MexBT"]}
+					  
+currencies = {"RMB","CLP","VEF","BRL","MXN"}
