@@ -1,9 +1,9 @@
 import urllib2 #making the api calls
 import json #parseing the api calls to json
 import time #testing the timing of the api calls
-import pdb
+import pdb #used for testing and debugging
 
-
+import ExchangeInfo
 import Variables
 
 class MarketDepthCalculator:
@@ -12,28 +12,11 @@ class MarketDepthCalculator:
 	def __init__(self):
 
 		#exchnages api urls
-		self.exchangeURLs = {"ChileBit":"https://api.blinktrade.com/api/v1/CLP/orderbook?crypto_currency=BTC",
-							 "BTCChina":"https://data.btcchina.com/data/orderbook?limit=200",
-							 "OKCoin":"https://www.okcoin.cn/api/depth.do",
-							 "SurBitCoin":"https://api.blinktrade.com/api/v1/VEF/orderbook?crypto_currency=BTC",
-							 "FoxBit":"https://api.blinktrade.com/api/v1/BRL/orderbook?crypto_currency=BTC",
-							 "MexBT":"https://data.mexbt.com/order-book/btcmxn",
-							 "SurBTC":"https://www.surbtc.com/api/v1/markets/btc-clp/order_book.json"}
-
+		self.exchangeURLs = ExchangeInfo.exchangeURLs
 		#tell the exchanges for each country
-		self.exchangeReference = {"CLP":["ChileBit","SurBTC"],
-								  "RMB":["BTCChina","OKCoin"],
-								  "VEF":["SurBitCoin"],
-								  "BRL":["FoxBit"],
-								  "MXN":["MexBT"]}
+		self.exchangeReference = ExchangeInfo.exchangeReference
 		#tell the market depth needed for accurate functions
-		self.exchangeDepth = {"ChileBit":0,
-							  "BTCChina":199,
-							  "OKCoin":199,
-							  "SurBitCoin":0,
-							  "FoxBit":0,
-							  "MexBT":0,
-							  "SurBTC":0}
+		self.exchangeDepth = ExchangeInfo.exchangeDepth
 		#get the url from the other api file
 		self.open_exchange_rates_url = Variables.open_exchange_rates_url
 
