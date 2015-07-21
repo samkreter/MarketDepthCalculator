@@ -1,11 +1,13 @@
 import urllib2 #making the api calls
 import json #parseing the api calls to json
 import time #testing the timing of the api calls
+import pdb
+
 
 import Variables
 
 class MarketDepthCalculator:
-	
+
 	#setting the url for the exhanges api
 	def __init__(self):
 
@@ -18,7 +20,7 @@ class MarketDepthCalculator:
 							 "MexBT":"https://data.mexbt.com/order-book/btcmxn",
 							 "SurBTC":"https://www.surbtc.com/api/v1/markets/btc-clp/order_book.json"}
 
-		#tell the exchanges for each country 
+		#tell the exchanges for each country
 		self.exchangeReference = {"CLP":["ChileBit","SurBTC"],
 								  "RMB":["BTCChina","OKCoin"],
 								  "VEF":["SurBitCoin"],
@@ -34,8 +36,8 @@ class MarketDepthCalculator:
 							  "SurBTC":0}
 		#get the url from the other api file
 		self.open_exchange_rates_url = Variables.open_exchange_rates_url
-		
-		#easier reference instead of 1 and 0 for the quantity and price 
+
+		#easier reference instead of 1 and 0 for the quantity and price
 		self.price = 0
 		self.quan = 1
 
@@ -55,23 +57,23 @@ class MarketDepthCalculator:
 			if value > amount:
 				amount = value
 				best = key
-		return best 
-	
+		return best
+
 	#return the exchange rate based on going through the bitcoin market
 	def bitnexoExchangeRate(self,base,exchange):
 		return exchange['exchanges'][exchange['Best']]['moneyExchanged']/base['amount']
 
-	#return the most current exchange rates 
+	#return the most current exchange rates
 	def exchangeRate(self,baseCurrency,exchangeCurrency):
 		if baseCurrency == 'RMB':
-			baseCurrency = 'CNY' 
+			baseCurrency = 'CNY'
 		if exchangeCurrency == 'RMB':
-			exchangeCurrency = 'CNY' 
-		data = self.exchangeRateDataSetup() 
+			exchangeCurrency = 'CNY'
+		data = self.exchangeRateDataSetup()
 		return 1/data['rates'][baseCurrency]*data['rates'][exchangeCurrency]
 
 
-	#check the exchangerate data to only make api call once an hour 
+	#check the exchangerate data to only make api call once an hour
 	def exchangeRateDataSetup(self):
 		f = open("openExchangeRateData.txt")
 		lastCallInfo = json.loads(f.read())
@@ -93,27 +95,33 @@ class MarketDepthCalculator:
 
 		return openExchangeRateData
 
+	#used to make all exchange data equal
+	def filterMarketData(self,exchange,data):
+		if exchange == 'SurBTC':
+			return data['order_book']
+		else:
+			return data
 
-	#controling exchanges in the selling of coins 
+	#controling exchanges in the selling of coins
 	def ExchangeSellCoins(self,coins,name):
 		market_depth = dict()
 		totalMarketBuyData = dict()
 		totalMarketBuyData['exchanges'] = dict()
 		for exchange in self.exchangeReference[name]:
-			
+
 			Start_time = time.time()
-			market_depth[exchange] = json.loads(urllib2.urlopen(self.exchangeURLs[exchange]).read())
+			market_depth[exchange] = self.filterMarketData(exchange,json.loads(urllib2.urlopen(self.exchangeURLs[exchange]).read()))
+
 			print(exchange," Execution Time = ",time.time() - Start_time)
-			
 			totalMarketBuyData['exchanges'][exchange] = self.calculate_sell_bitcoins(coins,market_depth[exchange]['bids'])
-			
+
 			if 'errors' in totalMarketBuyData['exchanges'][exchange]:
 				return totalMarketBuyData['exchanges'][exchange]
 
 		totalMarketBuyData['Best'] = self.findBest(totalMarketBuyData['exchanges'])
-		return totalMarketBuyData	
+		return totalMarketBuyData
 
-	#controling exchanges for the buying of coins 
+	#controling exchanges for the buying of coins
 	def ExchangeBuyCoins(self,money,name):
 		market_depth = dict()
 		totalMarketBuyData = dict()
@@ -126,7 +134,7 @@ class MarketDepthCalculator:
 			totalMarketBuyData['exchanges'][exchange] = self.calculate_buy_bitcoins(money,market_depth[exchange]['asks'],self.exchangeDepth[exchange])
 			if 'errors' in totalMarketBuyData['exchanges'][exchange]:
 				return totalMarketBuyData['exchanges'][exchange]
-		
+
 		totalMarketBuyData['Best'] = self.findBest(totalMarketBuyData['exchanges'])
 
 		totalMarketBuyData['amount'] = money
@@ -134,9 +142,9 @@ class MarketDepthCalculator:
 		return totalMarketBuyData
 
 
-	#use the api information to find the marketdepth for the money amount provided 
-	#depth had to be passed in since the china exchange's asks array is in revese order of the other exchanges 
-	#this allows for the use of the same function for all the exhcnages 
+	#use the api information to find the marketdepth for the money amount provided
+	#depth had to be passed in since the china exchange's asks array is in revese order of the other exchanges
+	#this allows for the use of the same function for all the exhcnages
 	def calculate_buy_bitcoins(self,money,sells,depth):
 		currMoney = money
 		coinsExchanged = 0
@@ -157,7 +165,7 @@ class MarketDepthCalculator:
 		if currMoney > 0:
 			coinsExchanged = coinsExchanged + (currMoney / sells[depth][self.price])
 
-		#testing accuracy 
+		#testing accuracy
 		print("total bitcoins bought: {0}".format(coinsExchanged))
 		print("total market depth reached: {0}".format(len(sells) - depth))
 		print("total money spent: ${0}".format(money))
@@ -169,7 +177,7 @@ class MarketDepthCalculator:
 
 
 	def calculate_sell_bitcoins(self,coins,buys):
-		currSellCoins = coins 
+		currSellCoins = coins
 		moneyExchanged = 0
 		depth = 0
 
@@ -177,7 +185,7 @@ class MarketDepthCalculator:
 			while currSellCoins > buys[depth][self.quan] and currSellCoins > 0:
 				moneyExchanged = moneyExchanged + (buys[depth][self.quan] * buys[depth][self.price])
 				currSellCoins = currSellCoins - buys[depth][self.quan]
-				depth = depth + 1 
+				depth = depth + 1
 		except:
 			print("unable to calculate due to lack of buyers")
 			print("depth reached was {0}".format(depth))
@@ -194,7 +202,7 @@ class MarketDepthCalculator:
 		return dict(moneyExchanged=moneyExchanged,depth=depth)
 
 
-	
+
 
 
 
